@@ -1,12 +1,12 @@
-package com.deloitte;
+package com.abbvie.cdrp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CdrpDataApplication {
+public class CdrpServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CdrpDataApplication.class, args);
+		SpringApplication.run(CdrpServiceApplication.class, args);
 	}
 }

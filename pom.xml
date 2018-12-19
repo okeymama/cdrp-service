@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>cdrp-data</artifactId>
+	<artifactId>cdrp-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>cdrp-data</name>
+	<name>cdrp-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
