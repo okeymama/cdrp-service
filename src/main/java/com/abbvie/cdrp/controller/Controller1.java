@@ -24,7 +24,7 @@ public class Controller1 {
 	
 	List<Details> details = new ArrayList<Details>();
 	Details d1= new Details("6","4","7","55","8","15","250","150","2","7");
-	Details d2= new Details("2","8","9","15","4","10","400","100","2","7");
+	Details d2= new Details("2","8","9","15","4","10","400","100","5","9");
 	Details d3= new Details("--","--","--","--","--","--","","","",""); 
 	public Controller1() {
 		
