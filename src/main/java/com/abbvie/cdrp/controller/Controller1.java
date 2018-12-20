@@ -28,7 +28,7 @@ public class Controller1 {
 	Details d3= new Details("--","--","--","--","--","--","","","",""); 
 	public Controller1() {
 		
-		add();
+		 add();
 
 	}
 	
