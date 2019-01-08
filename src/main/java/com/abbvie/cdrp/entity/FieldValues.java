@@ -30,9 +30,9 @@ public class FieldValues implements Serializable {
 	private FieldValuesId id;
 	
 	@Column(name = "alternate_field_oid")
-	private String AlternateFieldOID;
+	private String alternateFieldOID;
 	
 	@Column(name = "field_values")
-	private String FieldValues;
+	private String fieldValues;
 	
 }

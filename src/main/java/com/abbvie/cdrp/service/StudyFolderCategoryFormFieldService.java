@@ -25,14 +25,26 @@ public class StudyFolderCategoryFormFieldService {
 	
 	
 	public StudyFolderCategoryFormFieldDTO getStudyFolderCategoryFormField(
-			StudyFolderCategoryFormFieldId studyFolderCategoryFormFieldId) {
+			StudyFolderCategoryFormFieldIdDTO studyFldrCategoryFormFieldIdDTO) {
+		 StudyFolderCategoryFormFieldId studyFolderCategoryFormFieldId = new StudyFolderCategoryFormFieldId();
+		 BeanUtils.copyProperties(studyFldrCategoryFormFieldIdDTO, studyFolderCategoryFormFieldId);
 		 StudyFolderCategoryFormField studyFolderCategoryFormField = studyFolderCategoryFormFieldRepository.getOne(studyFolderCategoryFormFieldId);
 		 StudyFolderCategoryFormFieldDTO studyFolderCategoryFormFieldDTO = new StudyFolderCategoryFormFieldDTO();
-		 StudyFolderCategoryFormFieldIdDTO studyFolderCategoryFormFieldIdDTO = new StudyFolderCategoryFormFieldIdDTO();
+		 copyToStudyFolderCategoryFormFieldDTO(studyFolderCategoryFormField, studyFolderCategoryFormFieldDTO);
+		 return studyFolderCategoryFormFieldDTO;
+	}
+
+
+	/**
+	 * @param studyFolderCategoryFormField
+	 * @param studyFolderCategoryFormFieldDTO
+	 */
+	private void copyToStudyFolderCategoryFormFieldDTO(StudyFolderCategoryFormField studyFolderCategoryFormField,
+			StudyFolderCategoryFormFieldDTO studyFolderCategoryFormFieldDTO) {
+		StudyFolderCategoryFormFieldIdDTO studyFolderCategoryFormFieldIdDTO = new StudyFolderCategoryFormFieldIdDTO();
 		 BeanUtils.copyProperties(studyFolderCategoryFormField, studyFolderCategoryFormFieldDTO);
 		 BeanUtils.copyProperties(studyFolderCategoryFormField.getId(), studyFolderCategoryFormFieldIdDTO);
 		 studyFolderCategoryFormFieldDTO.setId(studyFolderCategoryFormFieldIdDTO);
-		 return studyFolderCategoryFormFieldDTO;
 	}
 
 }

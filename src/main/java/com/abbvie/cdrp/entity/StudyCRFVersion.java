@@ -30,18 +30,18 @@ public class StudyCRFVersion implements Serializable {
 	private StudyCRFVersionId id;
 	
 	@Column(name = "study_active_flag")
-	private String StudyActiveFlag;
+	private String studyActiveFlag;
 	
 	@Column(name = "crf_version_name")
-	private String CRFVersionName;
+	private String crfVersionName;
 	
 	@Column(name = "crf_version_valid_flag")
-	private String CRFVersionValidFlag;
+	private String crfVersionValidFlag;
 	
 	@Column(name = "crf_version_is_draft_flag")
-	private String CRFVersionIsDraftFlag;
+	private String crfVersionIsDraftFlag;
 	
 	@Column(name = "crf_version_has_clinicaldata_flag")
-	private String CRFVersionHasClinicaldataFlag;
+	private String crfVersionHasClinicaldataFlag;
 					
 }
