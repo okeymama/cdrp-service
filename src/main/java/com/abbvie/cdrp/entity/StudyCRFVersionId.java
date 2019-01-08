@@ -26,12 +26,12 @@ public class StudyCRFVersionId implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "study_number")
-	private String StudyNumber;
+	private String studyNumber;
 	
 	@Column(name = "latest_crf_version_id")
-	private String LatestCRFVersionId;
+	private String latestCRFVersionId;
 	
 	@Column(name = "environment")
-	private String Environment;
+	private String environment;
 	
 }

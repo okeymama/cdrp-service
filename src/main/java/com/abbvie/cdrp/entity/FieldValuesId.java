@@ -20,18 +20,15 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode
 public class FieldValuesId implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "study_number")
-	private String StudyNumber;
+	private String studyNumber;
 	
 	@Column(name = "field_oid")
-	private String FieldOID;
+	private String fieldOID;
 	
 	@Column(name = "field_code")
-	private String FieldCode;
+	private String fieldCode;
 	
 }
