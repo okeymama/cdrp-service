@@ -34,7 +34,7 @@ public class DataTrajectory {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="data_trajectory_id")
-	private String dataTrajectoryId;
+	private Long dataTrajectoryId;
 	
 	@Column(name="data_trajectory_name")
 	private String dataTrajectoryName;

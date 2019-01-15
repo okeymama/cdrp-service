@@ -28,13 +28,13 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name="expeacted_data_category")
+@Table(name="expected_data_category")
 public class ExpeactedDataCategory {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="expected_data_category_id")
-	private String expectedDataCategoryId;
+	private Long expectedDataCategoryId;
 	
 	@Column(name="expected_data_category_name")
 	private String expectedDataCategoryName;
@@ -46,7 +46,7 @@ public class ExpeactedDataCategory {
 	private String source;
 	
 	@Column(name="data_transfer_frequency")
-	private String dataTransferFrequency;
+	private Long dataTransferFrequency;
 	
 	@Column(name="is_critical_data")
 	private Boolean isCriticalData;

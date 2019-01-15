@@ -3,6 +3,7 @@
  */
 package com.abbvie.cdrp.entity;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,7 +30,7 @@ public class IDRPPlanDetail {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idrp_plan_detail_id")
-	private String idrpPlanDetailsId;
+	private Long idrpPlanDetailsId;
 	
 	@Column(name="study_id")
 	private String studyId;
@@ -41,13 +42,13 @@ public class IDRPPlanDetail {
 	private String planVersion;
 	
 	@Column(name="created_date")
-	private String createdDate;
+	private Date createdDate;
 	
 	@Column(name="approval_date")
-	private String approvalDate;
+	private Date approvalDate;
 	
 	@Column(name="last_modified_by")
-	private String lastModifiedBy;
+	private Date lastModifiedBy;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "idrpPlanDetail", orphanRemoval = true)
 	private Set<DataTrajectory> dataTrajectorySet;

@@ -32,7 +32,7 @@ public class IDRPCheck {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idrp_check_id")
-	private String idrpCheckId;
+	private Long idrpCheckId;
 	
 	@Column(name="purpose")
 	private String purpose;
@@ -41,7 +41,7 @@ public class IDRPCheck {
 	private String description;	
 	
 	@Column(name="visit")
-	private String visit;	
+	private Long visit;	
 	
 	@Column(name="role")
 	private String role;
