@@ -30,8 +30,8 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name="data_trajectory")
-public class DataTrajectory implements Serializable{
+@Table(name="data_trajectory_subject_assignment")
+public class DataTrajectorySubjectAssignment implements Serializable{
 
 	/**
 	 * 
@@ -40,14 +40,20 @@ public class DataTrajectory implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="data_trajectory_id")
-	private Long dataTrajectoryId;
+	@Column(name="data_trajectory_subject_assignment_id")
+	private Long dataTrajectorySubjectAssignmentId;	
 	
-	@Column(name="data_trajectory_name")
-	private String dataTrajectoryName;
+	@Column(name="visit")
+	private String visit;
 	
-	@Column(name="description")
-	private String description;
+	@Column(name="form")
+	private String form;
+	
+	@Column(name="field")
+	private String field;
+	
+	@Column(name="fieldValue")
+	private String fieldValue;
 	
 	@Column(name="created_by")
 	private String createdBy;
@@ -58,14 +64,12 @@ public class DataTrajectory implements Serializable{
 	@Column(name="last_updated_date")
 	private Date lastUpdatedDate;
 	
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = IDRPPlanDetail.class)
-    @JoinColumn(name = "idrp_plan_detail_id", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = DataTrajectory.class)
+    @JoinColumn(name = "data_trajectory_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-	private IDRPPlanDetail idrpPlanDetail;
+	private DataTrajectory dataTrajectory;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory", orphanRemoval = true)
-	private Set<ExpectedDataCategory> expectedDataCategorySet;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectorySubjectAssignment", orphanRemoval = true)
+	private Set<AssignedSubject> assignedSubjectSet; 
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory", orphanRemoval = true)
-	private Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet;
 }

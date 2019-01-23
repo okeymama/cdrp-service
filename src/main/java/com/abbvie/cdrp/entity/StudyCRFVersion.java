@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -44,4 +45,12 @@ public class StudyCRFVersion implements Serializable {
 	@Column(name = "crf_version_has_clinicaldata_flag")
 	private String crfVersionHasClinicaldataFlag;
 					
+	@Column(name="created_by")
+	private String createdBy;
+	
+	@Column(name="created_date")
+	private Date createdDate;
+	
+	@Column(name="last_updated_date")
+	private Date lastUpdatedDate;
 }
