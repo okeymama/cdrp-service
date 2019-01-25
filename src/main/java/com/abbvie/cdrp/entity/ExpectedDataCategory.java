@@ -70,7 +70,7 @@ public class ExpectedDataCategory implements Serializable{
 	private DataTrajectory dataTrajectory;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory", orphanRemoval = true)
-	private Set<IDRPCheck> idrpCheck;
+	private Set<IDRPCheck> idrpCheckSet;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory", orphanRemoval = true)
 	private Set<AppliedVisit> appliedVisitSet;	

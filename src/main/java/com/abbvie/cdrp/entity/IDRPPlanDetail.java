@@ -3,6 +3,7 @@
  */
 package com.abbvie.cdrp.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -25,8 +26,13 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="idrp_plan_detail")
-public class IDRPPlanDetail {
+public class IDRPPlanDetail implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idrp_plan_detail_id")
