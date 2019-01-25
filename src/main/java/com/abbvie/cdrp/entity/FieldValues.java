@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -34,5 +35,14 @@ public class FieldValues implements Serializable {
 	
 	@Column(name = "field_values")
 	private String fieldValues;
+	
+	@Column(name="created_by")
+	private String createdBy;
+	
+	@Column(name="created_date")
+	private Date createdDate;
+	
+	@Column(name="last_updated_date")
+	private Date lastUpdatedDate;
 	
 }

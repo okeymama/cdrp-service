@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -71,5 +72,14 @@ public class StudyFolderCategoryFormField implements Serializable {
 	
 	@Column(name = "field_is_draft_flag")
 	private String fieldIsDraftFlag;
+	
+	@Column(name="created_by")
+	private String createdBy;
+	
+	@Column(name="created_date")
+	private Date createdDate;
+	
+	@Column(name="last_updated_date")
+	private Date lastUpdatedDate;
 
 }
