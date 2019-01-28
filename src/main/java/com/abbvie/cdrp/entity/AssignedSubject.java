@@ -17,11 +17,13 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 @Data
 @Entity
 @Table(name="assigned_subject")
+@EqualsAndHashCode(of = { "assignedSubjectId" })
 public class AssignedSubject implements Serializable{
 	
 	/**

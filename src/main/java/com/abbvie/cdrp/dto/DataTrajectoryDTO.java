@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class DataTrajectoryDTO {
 
-private Long dataTrajectoryId;
+	private Long dataTrajectoryId;
 	
 	private String dataTrajectoryName;
 	
@@ -26,8 +26,6 @@ private Long dataTrajectoryId;
 	private Date createdDate;
 	
 	private Date lastUpdatedDate;
-	
-	private IDRPPlanDetailDTO idrpPlanDetailDTO;
 	
 	private List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList;
 	

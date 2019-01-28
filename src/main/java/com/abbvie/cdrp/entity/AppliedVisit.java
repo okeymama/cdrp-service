@@ -19,6 +19,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author cchaubey
@@ -28,6 +29,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="applied_visit")
+@EqualsAndHashCode(of = { "appliedVisitId" })
 public class AppliedVisit implements Serializable{
 
 	/**

@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author cchaubey
@@ -26,6 +27,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="idrp_plan_detail")
+@EqualsAndHashCode(of = { "idrpPlanDetailsId" })
 public class IDRPPlanDetail implements Serializable{
 	
 	/**

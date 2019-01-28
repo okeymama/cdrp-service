@@ -31,8 +31,6 @@ public class ExpectedDataCategoryDTO {
 	
 	private Date lastUpdatedDate;
 	
-	private DataTrajectoryDTO dataTrajectoryDTO;
-	
 	private List<IDRPCheckDTO> idrpCheckDTOList;
 	
 	private List<AppliedVisitDTO> appliedVisitDTOList;	
