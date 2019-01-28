@@ -20,6 +20,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author cchaubey
@@ -28,6 +29,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="idrp_check")
+@EqualsAndHashCode(of = { "idrpCheckId" })
 public class IDRPCheck implements Serializable{
 
 	/**

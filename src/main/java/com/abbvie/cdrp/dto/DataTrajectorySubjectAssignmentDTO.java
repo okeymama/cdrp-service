@@ -33,8 +33,6 @@ public class DataTrajectorySubjectAssignmentDTO {
 	
 	private Date lastUpdatedDate;
 	
-	private DataTrajectory dataTrajectoryDTO;
-	
 	private List<AssignedSubjectDTO> assignedSubjectDTOList; 
 	
 }

@@ -23,6 +23,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author cchaubey
@@ -31,6 +32,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="expected_data_category")
+@EqualsAndHashCode(of = { "expectedDataCategoryId" })
 public class ExpectedDataCategory implements Serializable{
 
 	/**

@@ -58,12 +58,12 @@ public class IDRPPlanDetailService {
 					dataTrajectoryDTOList = new ArrayList<>();
 					for(DataTrajectory dataTrajectory : idrpPlanDetail.getDataTrajectorySet()) {
 						dataTrajectoryDTO = new DataTrajectoryDTO();
-						BeanUtils.copyProperties(dataTrajectoryDTO, dataTrajectory);
+						BeanUtils.copyProperties(dataTrajectory, dataTrajectoryDTO);
 						if(!CollectionUtils.isEmpty(dataTrajectory.getDataTrajectorySubjectAssignmentSet())) {
 							dataTrajectorySubjectAssignmentDTOList = new ArrayList<>();
 							for(DataTrajectorySubjectAssignment dataTrajectorySubjectAssignment : dataTrajectory.getDataTrajectorySubjectAssignmentSet()) {
 								dataTrajectorySubjectAssignmentDTO = new DataTrajectorySubjectAssignmentDTO();
-								BeanUtils.copyProperties(dataTrajectorySubjectAssignmentDTO, dataTrajectorySubjectAssignment);
+								BeanUtils.copyProperties(dataTrajectorySubjectAssignment, dataTrajectorySubjectAssignmentDTO);
 								dataTrajectorySubjectAssignmentDTOList.add(dataTrajectorySubjectAssignmentDTO);
 							}
 							dataTrajectoryDTO.setDataTrajectorySubjectAssignmentDTOList(dataTrajectorySubjectAssignmentDTOList);
@@ -72,7 +72,7 @@ public class IDRPPlanDetailService {
 							expectedDataCategoryDTOList = new ArrayList<>();
 							for(ExpectedDataCategory expectedDataCategory : dataTrajectory.getExpectedDataCategorySet()) {
 								expectedDataCategoryDTO = new ExpectedDataCategoryDTO();
-								BeanUtils.copyProperties(expectedDataCategoryDTO, expectedDataCategory);
+								BeanUtils.copyProperties(expectedDataCategory, expectedDataCategoryDTO);
 								if(!CollectionUtils.isEmpty(expectedDataCategory.getAppliedVisitSet())) {
 									appliedVisitDTOList = new ArrayList<>();
 									for(AppliedVisit appliedVisit : expectedDataCategory.getAppliedVisitSet()) {
@@ -96,6 +96,7 @@ public class IDRPPlanDetailService {
 							dataTrajectoryDTO.setExpectedDataCategoryDTOList(expectedDataCategoryDTOList);
 						}
 						dataTrajectoryDTOList.add(dataTrajectoryDTO);
+						idrpPlanDetailDTO.setDataTrajectoryDTOList(dataTrajectoryDTOList);
 					}
 
 				}

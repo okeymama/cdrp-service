@@ -21,6 +21,4 @@ public class AssignedSubjectDTO {
 	
 	private Date lastUpdatedDate;
 	
-	private DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO;
-	
 }

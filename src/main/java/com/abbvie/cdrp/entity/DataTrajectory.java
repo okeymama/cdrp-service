@@ -22,7 +22,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author cchaubey
@@ -31,6 +33,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="data_trajectory")
+@EqualsAndHashCode(of = { "dataTrajectoryId" })
 public class DataTrajectory implements Serializable{
 
 	/**

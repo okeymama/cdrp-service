@@ -23,6 +23,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author cchaubey
@@ -31,6 +32,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="data_trajectory_subject_assignment")
+@EqualsAndHashCode(of = { "dataTrajectorySubjectAssignmentId" })
 public class DataTrajectorySubjectAssignment implements Serializable{
 
 	/**
@@ -52,7 +54,7 @@ public class DataTrajectorySubjectAssignment implements Serializable{
 	@Column(name="field")
 	private String field;
 	
-	@Column(name="fieldValue")
+	@Column(name="field_value")
 	private String fieldValue;
 	
 	@Column(name="created_by")
