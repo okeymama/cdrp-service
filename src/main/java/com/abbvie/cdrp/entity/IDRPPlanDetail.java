@@ -38,7 +38,7 @@ public class IDRPPlanDetail implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idrp_plan_detail_id")
-	private Long idrpPlanDetailsId;
+	private Long idrpPlanDetailId;
 	
 	@Column(name="study_id")
 	private String studyId;

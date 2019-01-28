@@ -35,20 +35,63 @@ public class IDRPPlanDetailService {
 	@Autowired
 	private IDRPPlanDetailRepository idrpPlanDetailRepository;
 
+	/**
+	 * 
+	 * @return
+	 */
 	public List<IDRPPlanDetailDTO> getAllIDRPPlanDetailDTO() {
-
-		IDRPCheckDTO idrpCheckDTO = null;
-		IDRPPlanDetailDTO idrpPlanDetailDTO = null;
-		DataTrajectoryDTO dataTrajectoryDTO = null;
-		List<IDRPCheckDTO> idrpCheckDTOList = null;
-		List<IDRPPlanDetailDTO> idrpPlanDetailDTOList = null;
-		List<AppliedVisitDTO> appliedVisitDTOList = null;
-		ExpectedDataCategoryDTO expectedDataCategoryDTO = null;
-		List<DataTrajectoryDTO> dataTrajectoryDTOList = null;
-		List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList =  null;
-		DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO = null;
-		List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList = null;
 		List<IDRPPlanDetail> idrpPlanDetailList = idrpPlanDetailRepository.findAll();
+		List<IDRPPlanDetailDTO> idrpPlanDetailDTOList = new ArrayList<>();
+		idrpPlanDetailDTOList = getIDRPPlanDetailDTO(idrpPlanDetailDTOList, idrpPlanDetailList);
+		return idrpPlanDetailDTOList;
+	}
+
+	/**
+	 * 
+	 * @param idrpPlanDetailsIds
+	 * @return
+	 */
+	public List<IDRPPlanDetailDTO> getIDRPPlanDetailDTOList(List<Long> idrpPlanDetailsIds) {
+		List<IDRPPlanDetail> idrpPlanDetailList = idrpPlanDetailRepository.findAllById(idrpPlanDetailsIds);
+		List<IDRPPlanDetailDTO>  idrpPlanDetailDTOList = new ArrayList<>();
+		idrpPlanDetailDTOList = getIDRPPlanDetailDTO(idrpPlanDetailDTOList,idrpPlanDetailList);
+		return idrpPlanDetailDTOList;
+	}
+
+	/**
+	 * 
+	 * @param idrpPlanDetailsIds
+	 * @return
+	 */
+	public String deleteIDRPPlanDetailDTOList(List<Long> idrpPlanDetailsIds) {
+		String result = "fail";
+		if(!CollectionUtils.isEmpty(idrpPlanDetailsIds)) {
+			for(Long idrpPlanDetailsId : idrpPlanDetailsIds) {
+				idrpPlanDetailRepository.deleteById(idrpPlanDetailsId);
+			}
+			result = "success";
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * @param idrpPlanDetailDTOList
+	 * @param idrpPlanDetailList
+	 * @return
+	 */
+	private List<IDRPPlanDetailDTO> getIDRPPlanDetailDTO(List<IDRPPlanDetailDTO> idrpPlanDetailDTOList,
+			List<IDRPPlanDetail> idrpPlanDetailList) {
+		IDRPCheckDTO idrpCheckDTO;
+		IDRPPlanDetailDTO idrpPlanDetailDTO;
+		DataTrajectoryDTO dataTrajectoryDTO;
+		List<IDRPCheckDTO> idrpCheckDTOList;
+		List<AppliedVisitDTO> appliedVisitDTOList;
+		ExpectedDataCategoryDTO expectedDataCategoryDTO;
+		List<DataTrajectoryDTO> dataTrajectoryDTOList;
+		List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList;
+		DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO;
+		List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList;
 		if(!CollectionUtils.isEmpty(idrpPlanDetailList)) {
 			idrpPlanDetailDTOList = new ArrayList<>();
 			for(IDRPPlanDetail idrpPlanDetail : idrpPlanDetailList) {
@@ -105,4 +148,6 @@ public class IDRPPlanDetailService {
 		}
 		return idrpPlanDetailDTOList;
 	}
+	
+
 }
