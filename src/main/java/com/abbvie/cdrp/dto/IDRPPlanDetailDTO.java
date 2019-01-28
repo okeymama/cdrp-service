@@ -6,8 +6,6 @@ package com.abbvie.cdrp.dto;
 import java.util.Date;
 import java.util.List;
 
-import com.abbvie.cdrp.entity.DataTrajectory;
-
 import lombok.Data;
 
 /**
@@ -17,7 +15,7 @@ import lombok.Data;
 @Data
 public class IDRPPlanDetailDTO {
 
-	private Long idrpPlanDetailsId;
+	private Long idrpPlanDetailId;
 	
 	private String studyId;
 
