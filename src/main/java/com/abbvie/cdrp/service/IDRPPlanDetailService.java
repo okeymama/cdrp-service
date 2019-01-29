@@ -14,18 +14,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.abbvie.cdrp.dto.AppliedVisitDTO;
+import com.abbvie.cdrp.dto.AssignedSubjectDTO;
 import com.abbvie.cdrp.dto.DataTrajectoryDTO;
 import com.abbvie.cdrp.dto.DataTrajectorySubjectAssignmentDTO;
 import com.abbvie.cdrp.dto.ExpectedDataCategoryDTO;
 import com.abbvie.cdrp.dto.IDRPCheckDTO;
 import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
 import com.abbvie.cdrp.entity.AppliedVisit;
+import com.abbvie.cdrp.entity.AssignedSubject;
 import com.abbvie.cdrp.entity.DataTrajectory;
 import com.abbvie.cdrp.entity.DataTrajectorySubjectAssignment;
 import com.abbvie.cdrp.entity.ExpectedDataCategory;
 import com.abbvie.cdrp.entity.IDRPCheck;
 import com.abbvie.cdrp.entity.IDRPPlanDetail;
 import com.abbvie.cdrp.repository.IDRPPlanDetailRepository;
+import com.abbvie.cdrp.util.CDRPBeanUtil;
 
 /**
  * @author cchaubey
@@ -40,8 +43,10 @@ public class IDRPPlanDetailService {
 	/**
 	 * 
 	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
-	public List<IDRPPlanDetailDTO> getAllIDRPPlanDetailDTO() {
+	public List<IDRPPlanDetailDTO> getAllIDRPPlanDetailDTO() throws InstantiationException, IllegalAccessException {
 		List<IDRPPlanDetail> idrpPlanDetailList = idrpPlanDetailRepository.findAll();
 		List<IDRPPlanDetailDTO> idrpPlanDetailDTOList = new ArrayList<>();
 		idrpPlanDetailDTOList = getIDRPPlanDetailDTO(idrpPlanDetailDTOList, idrpPlanDetailList);
@@ -52,8 +57,10 @@ public class IDRPPlanDetailService {
 	 * 
 	 * @param idrpPlanDetailsIds
 	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
-	public List<IDRPPlanDetailDTO> getIDRPPlanDetailDTOList(List<Long> idrpPlanDetailsIds) {
+	public List<IDRPPlanDetailDTO> getIDRPPlanDetailDTOList(List<Long> idrpPlanDetailsIds) throws InstantiationException, IllegalAccessException {
 		List<IDRPPlanDetail> idrpPlanDetailList = idrpPlanDetailRepository.findAllById(idrpPlanDetailsIds);
 		List<IDRPPlanDetailDTO>  idrpPlanDetailDTOList = new ArrayList<>();
 		idrpPlanDetailDTOList = getIDRPPlanDetailDTO(idrpPlanDetailDTOList,idrpPlanDetailList);
@@ -96,9 +103,11 @@ public class IDRPPlanDetailService {
 	 * @param idrpPlanDetailDTOList
 	 * @param idrpPlanDetailList
 	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
 	private List<IDRPPlanDetailDTO> getIDRPPlanDetailDTO(List<IDRPPlanDetailDTO> idrpPlanDetailDTOList,
-			List<IDRPPlanDetail> idrpPlanDetailList) {
+			List<IDRPPlanDetail> idrpPlanDetailList) throws InstantiationException, IllegalAccessException {
 		IDRPCheckDTO idrpCheckDTO;
 		IDRPPlanDetailDTO idrpPlanDetailDTO;
 		DataTrajectoryDTO dataTrajectoryDTO;
@@ -124,6 +133,10 @@ public class IDRPPlanDetailService {
 							for(DataTrajectorySubjectAssignment dataTrajectorySubjectAssignment : dataTrajectory.getDataTrajectorySubjectAssignmentSet()) {
 								dataTrajectorySubjectAssignmentDTO = new DataTrajectorySubjectAssignmentDTO();
 								BeanUtils.copyProperties(dataTrajectorySubjectAssignment, dataTrajectorySubjectAssignmentDTO);
+								if(!CollectionUtils.isEmpty(dataTrajectorySubjectAssignment.getAssignedSubjectSet())) {
+									List<AssignedSubjectDTO> assignedSubjectDTOList = CDRPBeanUtil.copyEntityListToDTOList(dataTrajectorySubjectAssignment.getAssignedSubjectSet(), AssignedSubjectDTO.class);
+									dataTrajectorySubjectAssignmentDTO.setAssignedSubjectDTOList(assignedSubjectDTOList);
+								}
 								dataTrajectorySubjectAssignmentDTOList.add(dataTrajectorySubjectAssignmentDTO);
 							}
 							dataTrajectoryDTO.setDataTrajectorySubjectAssignmentDTOList(dataTrajectorySubjectAssignmentDTOList);
