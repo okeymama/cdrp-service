@@ -45,4 +45,10 @@ public class IDRPPlanDetailController {
 		 return ResponseEntity.ok(idrpPlanDetailDTO);
 	 }
 	
+	@PostMapping("/saveIDRPPlanDetailDTOList")
+	 public @ResponseBody void saveIDRPPlanDetailDTOList(@RequestBody List<IDRPPlanDetailDTO> idrpPlanDetailDTOList) throws Exception{
+		 log.info("Inside IDRPPlanDetailController.saveIDRPPlanDetailDTOList: ");
+		 idrpPlanDetailService.saveIDRPPlanDetailDTOList(idrpPlanDetailDTOList);
+	 }
+	
 }

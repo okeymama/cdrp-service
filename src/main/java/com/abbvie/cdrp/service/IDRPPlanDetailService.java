@@ -4,7 +4,9 @@
 package com.abbvie.cdrp.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +74,21 @@ public class IDRPPlanDetailService {
 			result = "success";
 		}
 		return result;
+	}
+	
+	
+	public void saveIDRPPlanDetailDTOList(List<IDRPPlanDetailDTO> idrpPlanDetailDTOList) {
+		
+		if(!CollectionUtils.isEmpty(idrpPlanDetailDTOList)) {
+			Set<IDRPPlanDetail> idrpPlanDetailSet = new HashSet<>();
+			idrpPlanDetailSet = getIDRPPlanDetail(idrpPlanDetailSet, idrpPlanDetailDTOList);
+			idrpPlanDetailRepository.saveAll(idrpPlanDetailSet);
+			idrpPlanDetailRepository.flush();
+			/*for(IDRPPlanDetail idrpPlanDetail : idrpPlanDetailSet) {
+				idrpPlanDetailRepository.saveAndFlush(idrpPlanDetail);
+			}*/
+		}
+		
 	}
 	
 	
@@ -147,6 +164,81 @@ public class IDRPPlanDetailService {
 			}
 		}
 		return idrpPlanDetailDTOList;
+	}
+	
+	
+	private Set<IDRPPlanDetail> getIDRPPlanDetail(Set<IDRPPlanDetail> idrpPlanDetailSet,
+			List<IDRPPlanDetailDTO> idrpPlanDetailDTOList) {
+		IDRPCheck idrpCheck;
+		IDRPPlanDetail idrpPlanDetail;
+		DataTrajectory dataTrajectory;
+		Set<IDRPCheck> idrpCheckSet;
+		Set<AppliedVisit> appliedVisitSet;
+		ExpectedDataCategory expectedDataCategory;
+		Set<DataTrajectory> dataTrajectorySet;
+		Set<ExpectedDataCategory> expectedDataCategorySet;
+		DataTrajectorySubjectAssignment dataTrajectorySubjectAssignment;
+		Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet;
+		if(!CollectionUtils.isEmpty(idrpPlanDetailDTOList)) {
+			idrpPlanDetailSet = new HashSet<>();
+			for(IDRPPlanDetailDTO idrpPlanDetailDTO : idrpPlanDetailDTOList) {
+				idrpPlanDetail = new IDRPPlanDetail();
+				BeanUtils.copyProperties(idrpPlanDetailDTO, idrpPlanDetail);
+				if(!CollectionUtils.isEmpty(idrpPlanDetailDTO.getDataTrajectoryDTOList())) {
+					dataTrajectorySet = new HashSet<>();
+					for(DataTrajectoryDTO dataTrajectoryDTO : idrpPlanDetailDTO.getDataTrajectoryDTOList()) {
+						dataTrajectory = new DataTrajectory();
+						BeanUtils.copyProperties(dataTrajectoryDTO, dataTrajectory);
+						dataTrajectory.setIdrpPlanDetail(idrpPlanDetail);
+						if(!CollectionUtils.isEmpty(dataTrajectoryDTO.getDataTrajectorySubjectAssignmentDTOList())) {
+							dataTrajectorySubjectAssignmentSet = new HashSet<>();
+							for(DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO : dataTrajectoryDTO.getDataTrajectorySubjectAssignmentDTOList()) {
+								dataTrajectorySubjectAssignment = new DataTrajectorySubjectAssignment();
+								BeanUtils.copyProperties(dataTrajectorySubjectAssignmentDTO, dataTrajectorySubjectAssignment);
+								dataTrajectorySubjectAssignment.setDataTrajectory(dataTrajectory);
+								dataTrajectorySubjectAssignmentSet.add(dataTrajectorySubjectAssignment);
+							}
+							dataTrajectory.setDataTrajectorySubjectAssignmentSet(dataTrajectorySubjectAssignmentSet);
+						}
+						if(!CollectionUtils.isEmpty(dataTrajectoryDTO.getExpectedDataCategoryDTOList())) {
+							expectedDataCategorySet = new HashSet<>();
+							for(ExpectedDataCategoryDTO expectedDataCategoryDTO : dataTrajectoryDTO.getExpectedDataCategoryDTOList()) {
+								expectedDataCategory = new ExpectedDataCategory();
+								BeanUtils.copyProperties(expectedDataCategoryDTO, expectedDataCategory);
+								expectedDataCategory.setDataTrajectory(dataTrajectory);
+								if(!CollectionUtils.isEmpty(expectedDataCategoryDTO.getAppliedVisitDTOList())) {
+									appliedVisitSet = new HashSet<>();
+									for(AppliedVisitDTO appliedVisitDTO : expectedDataCategoryDTO.getAppliedVisitDTOList()) {
+										AppliedVisit appliedVisit = new AppliedVisit();
+										BeanUtils.copyProperties(appliedVisitDTO,appliedVisit);
+										appliedVisit.setExpectedDataCategory(expectedDataCategory);
+										appliedVisitSet.add(appliedVisit);
+									}
+									expectedDataCategory.setAppliedVisitSet(appliedVisitSet);
+								}
+								if(!CollectionUtils.isEmpty(expectedDataCategoryDTO.getIdrpCheckDTOList())) {
+									idrpCheckSet = new HashSet<>();
+									for(IDRPCheckDTO idrpCheckDTO : expectedDataCategoryDTO.getIdrpCheckDTOList()) {
+										idrpCheck = new IDRPCheck();
+										BeanUtils.copyProperties(idrpCheckDTO, idrpCheck);
+										idrpCheck.setExpectedDataCategory(expectedDataCategory);
+										idrpCheckSet.add(idrpCheck);
+									}
+									expectedDataCategory.setIdrpCheckSet(idrpCheckSet);
+								}
+								expectedDataCategorySet.add(expectedDataCategory);
+							}
+							dataTrajectory.setExpectedDataCategorySet(expectedDataCategorySet);
+						}
+						dataTrajectorySet.add(dataTrajectory);
+						idrpPlanDetail.setDataTrajectorySet(dataTrajectorySet);
+					}
+
+				}
+				idrpPlanDetailSet.add(idrpPlanDetail);
+			}
+		}
+		return idrpPlanDetailSet;
 	}
 	
 
