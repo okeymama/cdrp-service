@@ -20,4 +20,6 @@ public class AppliedVisitDTO {
 	
 	private String visitName;
 	
+	private Long expectedDataCategoryId;
+	
 }
