@@ -48,7 +48,7 @@ public class DataTrajectorySubjectAssignmentService {
 	 * @param dataTrajectorySubjectAssignmentIds
 	 * @return
 	 */
-	public List<DataTrajectorySubjectAssignmentDTO> getDataTrajectorySubjectAssignmentDTOList(List<Long> dataTrajectorySubjectAssignmentIds)throws InstantiationException, IllegalAccessException {
+	public List<DataTrajectorySubjectAssignmentDTO> getDataTrajectorySubjectAssignmentDTOListByIds(List<Long> dataTrajectorySubjectAssignmentIds)throws InstantiationException, IllegalAccessException {
 		List<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentList = dataTrajectorySubjectAssignmentRepository.findAllById(dataTrajectorySubjectAssignmentIds);
 		List<DataTrajectorySubjectAssignmentDTO>  dataTrajectorySubjectAssignmentDTOList = new ArrayList<>();
 		dataTrajectorySubjectAssignmentDTOList = getDataTrajectorySubjectAssignmentDTO(dataTrajectorySubjectAssignmentDTOList, dataTrajectorySubjectAssignmentList);
@@ -117,9 +117,7 @@ public class DataTrajectorySubjectAssignmentService {
 		
 		DataTrajectory dataTrajectory;
 		DataTrajectorySubjectAssignment dataTrajectorySubjectAssignment;
-		//AssignedSubjectDTO assignedSubjectDTO = null;
 		Set<AssignedSubject> assignedSubjectSet;	
-		//Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet;
 		if(!CollectionUtils.isEmpty(dataTrajectorySubjectAssignmentDTOList)) {
 			dataTrajectorySubjectAssignmentSet = new HashSet<>();
 			for(DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO : dataTrajectorySubjectAssignmentDTOList) {

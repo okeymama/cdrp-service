@@ -13,6 +13,7 @@ import lombok.Data;
  *
  */
 @Data
+
 public class DataTrajectoryDTO {
 
 	private Long dataTrajectoryId;

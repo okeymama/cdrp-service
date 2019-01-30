@@ -31,10 +31,10 @@ public class DataTrajectoryController {
 		 return ResponseEntity.ok(dataTrajectoryDTO);
 	 }
 	
-	@PostMapping("/getDataTrajectoryDTOList")
-	 public @ResponseBody ResponseEntity<List<DataTrajectoryDTO>> getDataTrajectoryDTOList(@RequestBody List<Long> dataTrajectoryIds) throws Exception{
-		 log.info("Inside DataTrajectoryController.getDataTrajectoryDTOList: ");
-		 List<DataTrajectoryDTO> dataTrajectoryDTOList = dataTrajectoryService.getDataTrajectoryDTOList(dataTrajectoryIds);
+	@PostMapping("/getDataTrajectoryDTOListByIds")
+	 public @ResponseBody ResponseEntity<List<DataTrajectoryDTO>> getDataTrajectoryDTOListByIds(@RequestBody List<Long> dataTrajectoryIds) throws Exception{
+		 log.info("Inside DataTrajectoryController.getDataTrajectoryDTOListByIds: ");
+		 List<DataTrajectoryDTO> dataTrajectoryDTOList = dataTrajectoryService.getDataTrajectoryDTOListByIds(dataTrajectoryIds);
 		 return ResponseEntity.ok(dataTrajectoryDTOList);
 	 }
 	

@@ -33,10 +33,10 @@ public class AssignedSubjectController {
 		 return ResponseEntity.ok(assignedSubjectDTO);
 	 }
 	
-	@PostMapping("/getAssignedSubjectDTOList")
-	 public @ResponseBody ResponseEntity<List<AssignedSubjectDTO>> getAssignedSubjectDTOList(@RequestBody List<Long> assignedSubjectIds) throws Exception{
+	@PostMapping("/getAssignedSubjectDTOListByIds")
+	 public @ResponseBody ResponseEntity<List<AssignedSubjectDTO>> getAssignedSubjectDTOListByIds(@RequestBody List<Long> assignedSubjectIds) throws Exception{
 		 log.info("Inside AssignedSubjectController.getAssignedSubjectDTOList: ");
-		 List<AssignedSubjectDTO> assignedSubjectDTOList = assignedSubjectService.getAssignedSubjectDTOList(assignedSubjectIds);
+		 List<AssignedSubjectDTO> assignedSubjectDTOList = assignedSubjectService.getAssignedSubjectDTOListByIds(assignedSubjectIds);
 		 return ResponseEntity.ok(assignedSubjectDTOList);
 	 }
 	

@@ -39,7 +39,7 @@ public class AssignedSubjectService {
 	 * @param assignedSubjectIds
 	 * @return
 	 */
-	public List<AssignedSubjectDTO> getAssignedSubjectDTOList(List<Long> assignedSubjectIds) {
+	public List<AssignedSubjectDTO> getAssignedSubjectDTOListByIds(List<Long> assignedSubjectIds) {
 		List<AssignedSubject> assignedSubjectList = assignedSubjectRepository.findAllById(assignedSubjectIds);
 		List<AssignedSubjectDTO>  assignedSubjectDTOList = new ArrayList<>();
 		assignedSubjectDTOList = getAssignedSubjectDTO(assignedSubjectDTOList, assignedSubjectList);

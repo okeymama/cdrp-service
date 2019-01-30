@@ -33,10 +33,10 @@ public class DataTrajectorySubjectAssignmentController {
 		 return ResponseEntity.ok(dataTrajectorySubjectAssignmentDTO);
 	 }
 	
-	@PostMapping("/getDataTrajectorySubjectAssignmentDTOList")
-	 public @ResponseBody ResponseEntity<List<DataTrajectorySubjectAssignmentDTO>> getDataTrajectorySubjectAssignmentDTOList(@RequestBody List<Long> dataTrajectorySubjectAssignmentIds) throws Exception{
-		 log.info("Inside DataTrajectorySubjectAssignmentController.getDataTrajectorySubjectAssignmentDTOList: ");
-		 List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList = dataTrajectorySubjectAssignmentService.getDataTrajectorySubjectAssignmentDTOList(dataTrajectorySubjectAssignmentIds);
+	@PostMapping("/getDataTrajectorySubjectAssignmentDTOListByIds")
+	 public @ResponseBody ResponseEntity<List<DataTrajectorySubjectAssignmentDTO>> getDataTrajectorySubjectAssignmentDTOListByIds(@RequestBody List<Long> dataTrajectorySubjectAssignmentIds) throws Exception{
+		 log.info("Inside DataTrajectorySubjectAssignmentController.getDataTrajectorySubjectAssignmentDTOListByIds: ");
+		 List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList = dataTrajectorySubjectAssignmentService.getDataTrajectorySubjectAssignmentDTOListByIds(dataTrajectorySubjectAssignmentIds);
 		 return ResponseEntity.ok(dataTrajectorySubjectAssignmentDTOList);
 	 }
 	

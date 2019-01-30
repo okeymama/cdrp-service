@@ -49,7 +49,7 @@ public class DataTrajectoryService {
 	 * @param dataTrajectoryIds
 	 * @return
 	 */
-	public List<DataTrajectoryDTO> getDataTrajectoryDTOList(List<Long> dataTrajectoryIds) throws InstantiationException, IllegalAccessException {
+	public List<DataTrajectoryDTO> getDataTrajectoryDTOListByIds(List<Long> dataTrajectoryIds) throws InstantiationException, IllegalAccessException {
 		List<DataTrajectory> dataTrajectoryList = dataTrajectoryRepository.findAllById(dataTrajectoryIds);
 		List<DataTrajectoryDTO>  dataTrajectoryDTOList = new ArrayList<>();
 		dataTrajectoryDTOList = getDataTrajectoryDTO(dataTrajectoryDTOList, dataTrajectoryList);
@@ -98,10 +98,8 @@ public class DataTrajectoryService {
 		DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO = null;
 		List<IDRPCheckDTO> idrpCheckDTOList = null;
 		List<AppliedVisitDTO> appliedVisitDTOList = null;		
-		//List<DataTrajectoryDTO> dataTrajectoryDTOList = null;
 		List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList =  null;		
 		List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList = null;
-		//List<DataTrajectory> dataTrajectoryList = dataTrajectoryRepository.findAll();
 		if(!CollectionUtils.isEmpty(dataTrajectoryList)) {
 			dataTrajectoryDTOList = new ArrayList<>();
 			for(DataTrajectory dataTrajectory : dataTrajectoryList) {
@@ -167,7 +165,6 @@ public class DataTrajectoryService {
 		DataTrajectorySubjectAssignment dataTrajectorySubjectAssignment;
 		Set<IDRPCheck> idrpCheckSet;
 		Set<AppliedVisit> appliedVisitSet;	
-		//Set<DataTrajectory> dataTrajectorySet;
 		Set<ExpectedDataCategory> expectedDataCategorySet;
 		Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet;
 		
