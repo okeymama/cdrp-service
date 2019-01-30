@@ -5,6 +5,8 @@ package com.abbvie.cdrp.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 /**
@@ -42,6 +44,7 @@ public class IDRPCheckDTO {
 	
 	private Date lastUpdatedDate;
 	
+	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	private Long expectedDataCategoryId;
 	
 }

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.abbvie.cdrp.entity.DataTrajectory;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 
@@ -35,6 +36,7 @@ public class DataTrajectorySubjectAssignmentDTO {
 	
 	private List<AssignedSubjectDTO> assignedSubjectDTOList; 
 	
+	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	private Long dataTrajectoryId;
 	
 }

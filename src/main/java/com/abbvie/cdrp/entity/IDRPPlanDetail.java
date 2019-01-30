@@ -58,6 +58,6 @@ public class IDRPPlanDetail implements Serializable{
 	@Column(name="last_modified_by")
 	private Date lastModifiedBy;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "idrpPlanDetail", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "idrpPlanDetail")
 	private Set<DataTrajectory> dataTrajectorySet;
 }
