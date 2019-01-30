@@ -37,7 +37,7 @@ public class ExpectedDataCategoryService {
 		return expectedDataCategoryDTOList;
 	}
 	
-	public List<ExpectedDataCategoryDTO> getExpectedDataCategoryDTOListById(List<Long> expectedDataCategoryIds)  throws InstantiationException, IllegalAccessException  {
+	public List<ExpectedDataCategoryDTO> getExpectedDataCategoryDTOListByIds(List<Long> expectedDataCategoryIds)  throws InstantiationException, IllegalAccessException  {
 		List<ExpectedDataCategory> expectedDataCategoryList = expectedDataCategoryRepository.findAllById(expectedDataCategoryIds);
 		List<ExpectedDataCategoryDTO>  expectedDataCategoryDTOList = new ArrayList<>();
 		expectedDataCategoryDTOList = getExpectedDataCategoryDTO(expectedDataCategoryDTOList,expectedDataCategoryList);
@@ -93,15 +93,15 @@ public class ExpectedDataCategoryService {
 		
 	}
 	
-	public String deleteExpectedDatacategories(List<Long> expectedDataCategoryIds) {
+	public String deleteExpectedDatacategoryDTOList(List<Long> expectedDataCategoryIds) {
+		String result = "fail";
 		if(!CollectionUtils.isEmpty(expectedDataCategoryIds)) {
 		for(Long expectedDataCategoryId : expectedDataCategoryIds) {
 			 expectedDataCategoryRepository.deleteById(expectedDataCategoryId);
-			
 		}
-		
+		result="success";
 		}
-		return "Deleted";
+		return result;
 	}
 
 	

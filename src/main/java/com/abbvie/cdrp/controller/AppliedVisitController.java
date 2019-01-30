@@ -32,17 +32,17 @@ public class AppliedVisitController {
 		 return ResponseEntity.ok(appliedVisitDTO);
 	 }
 	
-	@PostMapping("/getAppliedVisitDTOListById")
-	public @ResponseBody ResponseEntity<List<AppliedVisitDTO>> getAppliedVisitDTOListById(@RequestBody List<Long> appliedVisitIds) throws Exception{
-		 log.info("Inside AppliedVisitController.getAppliedVisitDTOListById: ");
-		 List<AppliedVisitDTO> appliedVisitDTO = appliedVisitService.getAppliedVisitDTOListById(appliedVisitIds);
+	@PostMapping("/getAppliedVisitDTOListByIds")
+	public @ResponseBody ResponseEntity<List<AppliedVisitDTO>> getAppliedVisitDTOListByIds(@RequestBody List<Long> appliedVisitIds) throws Exception{
+		 log.info("Inside AppliedVisitController.getAppliedVisitDTOListByIds: ");
+		 List<AppliedVisitDTO> appliedVisitDTO = appliedVisitService.getAppliedVisitDTOListByIds(appliedVisitIds);
 		 return ResponseEntity.ok(appliedVisitDTO);
 	 }
 	
-	@PostMapping("/deleteAppliedVisits")
-	 public @ResponseBody String deleteAppliedVisits(@RequestBody List<Long> appliedVisitIds) throws Exception{
-		 log.info("Inside AppliedVisitController.deleteAppliedVisits: ");
-		 String result = appliedVisitService.deleteAppliedVisits(appliedVisitIds);
+	@PostMapping("/deleteAppliedVisitDTOList")
+	 public @ResponseBody String deleteAppliedVisitDTOList(@RequestBody List<Long> appliedVisitIds) throws Exception{
+		 log.info("Inside AppliedVisitController.deleteAppliedVisitDTOList: ");
+		 String result = appliedVisitService.deleteAppliedVisitDTOList(appliedVisitIds);
 		 return result;
 	 }
 	

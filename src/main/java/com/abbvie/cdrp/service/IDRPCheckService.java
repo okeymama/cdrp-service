@@ -34,7 +34,7 @@ public class IDRPCheckService {
 		return idrpCheckDTOList;
 	}
 	
-	public List<IDRPCheckDTO> getIDRPCheckDTOListById(List<Long> idrpCheckIds) {
+	public List<IDRPCheckDTO> getIDRPCheckDTOListByIds(List<Long> idrpCheckIds) {
 		List<IDRPCheck> idrpCheckList = idrpCheckRepository.findAllById(idrpCheckIds);
 		List<IDRPCheckDTO>  idrpCheckDTOList = new ArrayList<>();
 		idrpCheckDTOList = getIDRPCheckDTO(idrpCheckDTOList,idrpCheckList);
@@ -90,15 +90,16 @@ public class IDRPCheckService {
 	
 	
 	
-	public String deleteIDRPChecks(List<Long>  idrpCheckIds) {
+	public String deleteIDRPCheckDTOList(List<Long>  idrpCheckIds) {
+		String result = "fail";
 		if(!CollectionUtils.isEmpty(idrpCheckIds)) {
 		for(Long idrpCheckId : idrpCheckIds) {
 			idrpCheckRepository.deleteById(idrpCheckId);
 			
 		}
-		
+		result = "success";
 		}
-		return "Deleted";
+		return result;
 	}
 	
 	

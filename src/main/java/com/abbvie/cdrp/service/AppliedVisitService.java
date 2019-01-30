@@ -30,7 +30,7 @@ public class AppliedVisitService {
 		return appliedVisitDTOList;
 	}
 	
-	public List<AppliedVisitDTO> getAppliedVisitDTOListById(List<Long> appliedVisitIds) {
+	public List<AppliedVisitDTO> getAppliedVisitDTOListByIds(List<Long> appliedVisitIds) {
 		List<AppliedVisit> appliedVisitList = appliedVisitRepository.findAllById(appliedVisitIds);
 		List<AppliedVisitDTO>  appliedVisitDTOList = new ArrayList<>();
 		appliedVisitDTOList = getAppliedVisitDTO(appliedVisitDTOList,appliedVisitList);
@@ -83,15 +83,15 @@ public class AppliedVisitService {
 		return appliedVisitSet;
 	}
 	
-	public String deleteAppliedVisits(List<Long> appliedVisitIds) {
+	public String deleteAppliedVisitDTOList(List<Long> appliedVisitIds) {
+		String result = "fail";
 		if(!CollectionUtils.isEmpty(appliedVisitIds)) {
 		for(Long appliedVisitId : appliedVisitIds) {
 			appliedVisitRepository.deleteById(appliedVisitId);
-			
+			}
+		result="success";
 		}
-		
-		}
-		return "Deleted";
+		return result;
 	}
 	
 }

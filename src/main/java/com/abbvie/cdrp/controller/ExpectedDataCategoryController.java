@@ -31,17 +31,17 @@ public class ExpectedDataCategoryController {
 		 return ResponseEntity.ok(expectedDataCategoryDTO);
 	 }
 	
-	@PostMapping("/getExpectedDataCategoryDTOListById")
-	public @ResponseBody ResponseEntity<List<ExpectedDataCategoryDTO>> getExpectedDataCategoryDTOListById(@RequestBody List<Long> expectedDataCategoryIds) throws Exception{
-		log.info("Inside ExpectedDataCategoryController.getExpectedDataCategoryDTOListById: ");
-		 List<ExpectedDataCategoryDTO> expectedDataCategoryDTO = expectedDataCategoryService.getExpectedDataCategoryDTOListById(expectedDataCategoryIds);
+	@PostMapping("/getExpectedDataCategoryDTOListByIds")
+	public @ResponseBody ResponseEntity<List<ExpectedDataCategoryDTO>> getExpectedDataCategoryDTOListByIds(@RequestBody List<Long> expectedDataCategoryIds) throws Exception{
+		log.info("Inside ExpectedDataCategoryController.getExpectedDataCategoryDTOListByIds: ");
+		 List<ExpectedDataCategoryDTO> expectedDataCategoryDTO = expectedDataCategoryService.getExpectedDataCategoryDTOListByIds(expectedDataCategoryIds);
 		 return ResponseEntity.ok(expectedDataCategoryDTO);
 	 }
 	
-	@PostMapping("/deleteExpectedDataCategories")
-	 public @ResponseBody String deleteExpectedDataCategories(@RequestBody List<Long> expectedDataCategoryIds) throws Exception{
-		 log.info("Inside ExpectedDataCategoryController.deleteExpectedDataCategories: ");
-		 String result = expectedDataCategoryService.deleteExpectedDatacategories(expectedDataCategoryIds);
+	@PostMapping("/deleteExpectedDatacategoryDTOList")
+	 public @ResponseBody String deleteExpectedDatacategoryDTOList(@RequestBody List<Long> expectedDataCategoryIds) throws Exception{
+		 log.info("Inside ExpectedDataCategoryController.deleteExpectedDatacategoryDTOList: ");
+		 String result = expectedDataCategoryService.deleteExpectedDatacategoryDTOList(expectedDataCategoryIds);
 		 return result;
 	 }
 	

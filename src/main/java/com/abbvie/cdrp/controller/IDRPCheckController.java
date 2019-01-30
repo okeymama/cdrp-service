@@ -33,17 +33,17 @@ public class IDRPCheckController {
 		 return ResponseEntity.ok(idrpCheckDTO);
 	 }
 	
-	@PostMapping("/getIDRPCheckDTOListById")
-	public @ResponseBody ResponseEntity<List<IDRPCheckDTO>> getIDRPCheckDTOListById(@RequestBody List<Long> idrpCheckIds) throws Exception{
+	@PostMapping("/getIDRPCheckDTOListByIds")
+	public @ResponseBody ResponseEntity<List<IDRPCheckDTO>> getIDRPCheckDTOListByIds(@RequestBody List<Long> idrpCheckIds) throws Exception{
 		 log.info("Inside IDRPCheckController.getIDRPCheckDTOListById: ");
-		 List<IDRPCheckDTO> idrpCheckDTO = idrpCheckService.getIDRPCheckDTOListById(idrpCheckIds);
+		 List<IDRPCheckDTO> idrpCheckDTO = idrpCheckService.getIDRPCheckDTOListByIds(idrpCheckIds);
 		 return ResponseEntity.ok(idrpCheckDTO);
 	 }
 	
-	@PostMapping("/deleteIDRPChecks")
+	@PostMapping("/deleteIDRPCheckDTOList")
 	 public @ResponseBody String deleteIDRPChecks(@RequestBody List<Long> idrpCheckIds) throws Exception{
-		 log.info("Inside IDRPCheckController.deleteIDRPChecks: ");
-		 String result = idrpCheckService.deleteIDRPChecks(idrpCheckIds);
+		 log.info("Inside IDRPCheckController.deleteIDRPCheckDTOList: ");
+		 String result = idrpCheckService.deleteIDRPCheckDTOList(idrpCheckIds);
 		 return result;
 	 }
 	
