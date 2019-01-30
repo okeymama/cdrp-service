@@ -31,4 +31,6 @@ public class DataTrajectoryDTO {
 	
 	private List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList;
 	
+	private Long idrpPlanDetailId;
+	
 }

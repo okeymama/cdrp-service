@@ -24,4 +24,6 @@ public class AssignedSubjectDTO {
 	
 	private Date lastUpdatedDate;
 	
+	private Long dataTrajectorySubjectAssignmentId;
+	
 }
