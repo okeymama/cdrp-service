@@ -66,9 +66,9 @@ public class DataTrajectory implements Serializable{
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private IDRPPlanDetail idrpPlanDetail;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory")
 	private Set<ExpectedDataCategory> expectedDataCategorySet;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory")
 	private Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet;
 }

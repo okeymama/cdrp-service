@@ -71,7 +71,7 @@ public class DataTrajectorySubjectAssignment implements Serializable{
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private DataTrajectory dataTrajectory;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectorySubjectAssignment", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectorySubjectAssignment")
 	private Set<AssignedSubject> assignedSubjectSet; 
 	
 }

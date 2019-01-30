@@ -71,10 +71,10 @@ public class ExpectedDataCategory implements Serializable{
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private DataTrajectory dataTrajectory;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory")
 	private Set<IDRPCheck> idrpCheckSet;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory")
 	private Set<AppliedVisit> appliedVisitSet;	
 	
 }
