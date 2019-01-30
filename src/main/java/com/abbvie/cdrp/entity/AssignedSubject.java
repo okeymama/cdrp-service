@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="assigned_subject")
-@EqualsAndHashCode(of = { "assignedSubjectId" })
+@EqualsAndHashCode(of = { "assignedSubjectId","subjectId" })
 public class AssignedSubject implements Serializable{
 	
 	/**
@@ -48,7 +48,7 @@ public class AssignedSubject implements Serializable{
 	@Column(name="last_updated_date")
 	private Date lastUpdatedDate;
 	
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = DataTrajectory.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = DataTrajectorySubjectAssignment.class)
     @JoinColumn(name = "data_trajectory_subject_assignment_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private DataTrajectorySubjectAssignment dataTrajectorySubjectAssignment;

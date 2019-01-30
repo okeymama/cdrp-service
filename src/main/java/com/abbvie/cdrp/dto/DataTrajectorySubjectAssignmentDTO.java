@@ -35,4 +35,6 @@ public class DataTrajectorySubjectAssignmentDTO {
 	
 	private List<AssignedSubjectDTO> assignedSubjectDTOList; 
 	
+	private Long dataTrajectoryId;
+	
 }

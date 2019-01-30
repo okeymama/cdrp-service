@@ -33,7 +33,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="data_trajectory")
-@EqualsAndHashCode(of = { "dataTrajectoryId" })
+@EqualsAndHashCode(of = { "dataTrajectoryId","dataTrajectoryName","description" })
 public class DataTrajectory implements Serializable{
 
 	/**

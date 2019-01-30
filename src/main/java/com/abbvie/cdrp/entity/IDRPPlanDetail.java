@@ -27,7 +27,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="idrp_plan_detail")
-@EqualsAndHashCode(of = { "idrpPlanDetailId" })
+@EqualsAndHashCode(of = { "idrpPlanDetailId","studyId","planVersion"})
 public class IDRPPlanDetail implements Serializable{
 	
 	/**

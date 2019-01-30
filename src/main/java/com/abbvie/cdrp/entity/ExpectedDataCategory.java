@@ -32,7 +32,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="expected_data_category")
-@EqualsAndHashCode(of = { "expectedDataCategoryId" })
+@EqualsAndHashCode(of = { "expectedDataCategoryId","expectedDataCategoryName","source","dataTransferFrequency" })
 public class ExpectedDataCategory implements Serializable{
 
 	/**

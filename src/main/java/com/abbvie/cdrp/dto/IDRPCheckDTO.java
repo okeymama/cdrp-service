@@ -42,4 +42,6 @@ public class IDRPCheckDTO {
 	
 	private Date lastUpdatedDate;
 	
+	private Long expectedDataCategoryId;
+	
 }

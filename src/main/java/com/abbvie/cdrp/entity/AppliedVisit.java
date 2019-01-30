@@ -29,7 +29,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="applied_visit")
-@EqualsAndHashCode(of = { "appliedVisitId" })
+@EqualsAndHashCode(of = { "appliedVisitId","visitId" })
 public class AppliedVisit implements Serializable{
 
 	/**

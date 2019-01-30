@@ -29,7 +29,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="idrp_check")
-@EqualsAndHashCode(of = { "idrpCheckId" })
+@EqualsAndHashCode(of = { "idrpCheckId","purpose","description","visit","role","method","frequency" })
 public class IDRPCheck implements Serializable{
 
 	/**

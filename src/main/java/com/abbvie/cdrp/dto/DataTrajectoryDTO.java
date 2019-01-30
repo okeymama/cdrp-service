@@ -13,6 +13,7 @@ import lombok.Data;
  *
  */
 @Data
+
 public class DataTrajectoryDTO {
 
 	private Long dataTrajectoryId;
@@ -30,5 +31,7 @@ public class DataTrajectoryDTO {
 	private List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList;
 	
 	private List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList;
+	
+	private Long idrpPlanDetailId;
 	
 }
