@@ -69,6 +69,19 @@ public class IDRPPlanDetailService {
 
 	/**
 	 * 
+	 * @param studyId
+	 * @return
+	 */
+	public IDRPPlanDetailDTO getIDRPPlanDetailDTOByStudyID(String studyId) {
+		
+		IDRPPlanDetail idrpPlanDetail = idrpPlanDetailRepository.findByStudyId(studyId);
+		IDRPPlanDetailDTO idrpPlanDetailDTO = new IDRPPlanDetailDTO();
+		BeanUtils.copyProperties(idrpPlanDetail, idrpPlanDetailDTO);
+		return idrpPlanDetailDTO;
+	}
+	
+	/**
+	 * 
 	 * @param idrpPlanDetailsIds
 	 * @return
 	 */
@@ -84,8 +97,8 @@ public class IDRPPlanDetailService {
 	}
 	
 	
-	public void saveIDRPPlanDetailDTOList(List<IDRPPlanDetailDTO> idrpPlanDetailDTOList) {
-		
+	public String saveIDRPPlanDetailDTOList(List<IDRPPlanDetailDTO> idrpPlanDetailDTOList) {
+		String result="fail";
 		if(!CollectionUtils.isEmpty(idrpPlanDetailDTOList)) {
 			Set<IDRPPlanDetail> idrpPlanDetailSet = new HashSet<>();
 			idrpPlanDetailSet = getIDRPPlanDetail(idrpPlanDetailSet, idrpPlanDetailDTOList);
@@ -94,8 +107,9 @@ public class IDRPPlanDetailService {
 			/*for(IDRPPlanDetail idrpPlanDetail : idrpPlanDetailSet) {
 				idrpPlanDetailRepository.saveAndFlush(idrpPlanDetail);
 			}*/
+		result="success";
 		}
-		
+		return result;
 	}
 	
 	

@@ -3,6 +3,7 @@
  */
 package com.abbvie.cdrp.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,11 +24,11 @@ public class IDRPPlanDetailDTO {
 	
 	private String planVersion;
 	
-	private Date createdDate;
+	private LocalDate createdDate;
 	
-	private Date approvalDate;
+	private LocalDate approvalDate;
 	
-	private Date lastModifiedBy;
+	private LocalDate lastModifiedBy;
 	
 	private List<DataTrajectoryDTO> dataTrajectoryDTOList;
 	
