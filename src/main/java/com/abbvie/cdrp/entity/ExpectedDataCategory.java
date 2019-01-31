@@ -80,4 +80,7 @@ public class ExpectedDataCategory implements Serializable{
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory")
 	private Set<BusinessRule> businessRuleSet;	
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "expectedDataCategory")
+	private Set<RuleAssignedSubject> ruleAssignedSubjectSet;
+	
 }
