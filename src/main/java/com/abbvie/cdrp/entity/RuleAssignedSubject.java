@@ -54,9 +54,9 @@ public class RuleAssignedSubject implements Serializable{
 	@Column(name="last_updated_date")
 	private Date lastUpdatedDate;
 	
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = BusinessRule.class)
-    @JoinColumn(name = "business_rule_id", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = ExpectedDataCategory.class)
+    @JoinColumn(name = "expected_data_category_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-	private BusinessRule businessRule;
+	private ExpectedDataCategory expectedDataCategory;
 	
 }

@@ -64,10 +64,7 @@ public class BusinessRule implements Serializable {
 	private Date creationDate;
 	
 	@Column(name="last_updated_date")
-	private Date lastUpdatedDate;
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "businessRule")
-	private Set<RuleAssignedSubject> ruleAssignedSubjectSet;	
+	private Date lastUpdatedDate;	
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "businessRule")
 	private Set<BusinessRuleCondition> businessRuleConditionSet;	
