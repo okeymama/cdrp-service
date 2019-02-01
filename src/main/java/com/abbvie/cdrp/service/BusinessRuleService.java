@@ -85,8 +85,6 @@ public class BusinessRuleService {
 			List<BusinessRuleDTO> businessRuleDTOList) {
 		BusinessRule businessRule;
 		Set<BusinessRuleCondition> businessRuleConditionSet;
-
-		DataTrajectory dataTrajectory;
 		ExpectedDataCategory expectedDataCategory;
 		if(!CollectionUtils.isEmpty(businessRuleDTOList)) {
 			businessRuleSet = new HashSet<>();

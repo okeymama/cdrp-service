@@ -33,6 +33,9 @@ public class ExpectedDataCategoryDTO {
 	
 	private Date lastUpdatedDate;
 	
+
+	private String comment;
+	
 	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	private Long dataTrajectoryId;
 	
