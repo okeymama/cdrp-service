@@ -44,15 +44,16 @@ public class ExpectedDataCategoryService {
 		return expectedDataCategoryDTOList;
 	}
 	
-	public void saveExpectedDataCategoryDTOList(List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList) {
-		
+	public String saveExpectedDataCategoryDTOList(List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList) {
+		String result="fail";
 		if(!CollectionUtils.isEmpty(expectedDataCategoryDTOList)) {
 			Set<ExpectedDataCategory> expectedDataCategorySet = new HashSet<>();
 			expectedDataCategorySet = getExpectedDataCategory(expectedDataCategorySet, expectedDataCategoryDTOList);
 			expectedDataCategoryRepository.saveAll(expectedDataCategorySet);
 			expectedDataCategoryRepository.flush();
+			result="success";
 		}
-		
+		return result;
 	}
 	
 	public List<ExpectedDataCategoryDTO> getExpectedDataCategoryDTO(List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList,
