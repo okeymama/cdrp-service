@@ -36,5 +36,5 @@ public class DataTrajectoryDTO {
 	
 	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	private Long idrpPlanDetailId;
-	
+
 }

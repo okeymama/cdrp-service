@@ -69,7 +69,7 @@ public class DataTrajectory implements Serializable{
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory")
 	private Set<ExpectedDataCategory> expectedDataCategorySet;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "dataTrajectory")
 	private Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet;
 }

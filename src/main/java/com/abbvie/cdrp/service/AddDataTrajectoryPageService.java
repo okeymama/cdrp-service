@@ -14,7 +14,7 @@ import com.abbvie.cdrp.entity.ExpectedDataCategory;
 import com.abbvie.cdrp.repository.DataTrajectoryRepository;
 import com.abbvie.cdrp.repository.ExpectedDataCategoryRepository;
 
-@Service
+@Service 
 public class AddDataTrajectoryPageService {
 	
 	@Autowired

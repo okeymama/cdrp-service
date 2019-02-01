@@ -69,7 +69,7 @@ public class ExpectedDataCategory implements Serializable{
 	
 	@Column(name="comment")
 	private String comment;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = DataTrajectory.class)
     @JoinColumn(name = "data_trajectory_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
