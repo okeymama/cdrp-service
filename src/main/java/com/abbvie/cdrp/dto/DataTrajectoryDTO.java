@@ -3,6 +3,7 @@
  */
 package com.abbvie.cdrp.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -25,9 +26,9 @@ public class DataTrajectoryDTO {
 	
 	private String createdBy;
 	
-	private Date createdDate;
+	private LocalDate createdDate;
 	
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
 	
 	private List<ExpectedDataCategoryDTO> expectedDataCategoryDTOList;
 	
