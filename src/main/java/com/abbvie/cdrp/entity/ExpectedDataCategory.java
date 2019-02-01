@@ -54,8 +54,8 @@ public class ExpectedDataCategory implements Serializable{
 	@Column(name="data_transfer_frequency")
 	private String dataTransferFrequency;
 	
-	@Column(name="is_critical_data")
-	private Boolean isCriticalData;
+	@Column(name="critical_data")
+	private String criticalData;
 	
 	@Column(name="created_by")
 	private String createdBy;

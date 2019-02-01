@@ -15,4 +15,5 @@ import com.abbvie.cdrp.entity.IDRPPlanDetail;
 @Repository
 public interface IDRPPlanDetailRepository extends JpaRepository<IDRPPlanDetail, Long> {
 	
+	IDRPPlanDetail findByStudyId(String studyId);
 }

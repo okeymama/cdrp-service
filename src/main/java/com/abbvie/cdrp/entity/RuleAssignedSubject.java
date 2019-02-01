@@ -4,7 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,10 +49,10 @@ public class RuleAssignedSubject implements Serializable{
 	private String createdBy;
 	
 	@Column(name="creation_date")
-	private Date creationDate;
+	private LocalDate creationDate;
 	
 	@Column(name="last_updated_date")
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
 	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = ExpectedDataCategory.class)
     @JoinColumn(name = "expected_data_category_id", nullable = false)

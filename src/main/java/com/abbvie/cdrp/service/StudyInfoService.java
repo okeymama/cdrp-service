@@ -1,29 +1,27 @@
-package com.abbvie.cdrp.controller;
+package com.abbvie.cdrp.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
 import com.abbvie.cdrp.dto.IdrpPlan;
 import com.abbvie.cdrp.dto.Keyevent;
 import com.abbvie.cdrp.dto.PersonalAssignment;
 import com.abbvie.cdrp.dto.Reference;
 import com.abbvie.cdrp.dto.StudyInfo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@CrossOrigin(value="*")
-@RestController
-@Component
-public class Controller {
-
+@Service
+public class StudyInfoService {
+	
+	@Autowired
+	private IDRPPlanDetailService idrpPlanDetailService;
+	
 	Reference r1 = new Reference("TA1, TA2,..","compound1,compound2","Indication1, Indication2",
 			"A Phase Ib, Open-Label Study Evaluating the " + 
 			"Safety and Pharmacokinetics of GDC-0199 (ABT-199) in Combination " + 
@@ -48,23 +46,10 @@ public class Controller {
 	PersonalAssignment p1 = new PersonalAssignment("auto populated","auto populated","auto populated","auto populated",
 			"auto populated","auto populated","auto populated","auto populated");
 	
-	IdrpPlan i1 = new IdrpPlan("John Smith", "Version 2: Approved", "John Smith, 25-Jun-2018","John Smith, 25-Jun-2018","John Smith, 25-Jun-2018");
-
-	List<Keyevent> li = new ArrayList();
+	List<Keyevent> li;
 	
 
 	Map<String, StudyInfo> map = new HashMap<>();
-	
-	
-	public Controller()
-	{
-		add();
-		//StudyInfo d1 = new StudyInfo("MZ-123076", r1,li,p1,i1);
-		//StudyInfo d2 = new StudyInfo("MZ-123080", r2,li,p1,i1);
-		
-		//map.put(d1.getStudyId(),d1 );
-		//map.put(d2.getStudyId(), d2);
-	}
 	
 	public void add()
 	{
@@ -76,23 +61,24 @@ public class Controller {
 	
 	}
 	
-	
-	/*@RequestMapping(method=RequestMethod.GET, value="/data")
-	public StudyInfo getData()
+	public StudyInfo getStudyInfo(@RequestParam String id)
 	{
-		StudyInfo d = new StudyInfo();
-		System.out.println(d.getStudyId());
-		System.out.println(d.getReference());
-		return d;
-	}*/
-	
-	@RequestMapping(method=RequestMethod.GET, value="/getdata")
-	public StudyInfo getData1(@RequestParam String id)
-	{
+		li = new ArrayList();
+		add();
+		IDRPPlanDetailDTO idrpPlanDetailDTO =  idrpPlanDetailService.getIDRPPlanDetailDTOByStudyID(id);
+
+		StudyInfo d1 = new StudyInfo("M45-960", r1,li,p1,idrpPlanDetailDTO);
+		StudyInfo d2 = new StudyInfo("MZ-123080", r2,li,p1,idrpPlanDetailDTO);
+		
+		map.put(d1.getStudyId(),d1 );
+		map.put(d2.getStudyId(), d2);
+		
 		StudyInfo d;
 		d = map.get(id);
 		System.out.println(d);
 		return d;
 	}
+	
+	
 	
 }

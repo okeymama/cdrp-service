@@ -4,7 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -50,13 +50,13 @@ public class IDRPPlanDetail implements Serializable{
 	private String planVersion;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="approval_date")
-	private Date approvalDate;
+	private LocalDate approvalDate;
 	
 	@Column(name="last_modified_by")
-	private Date lastModifiedBy;
+	private LocalDate lastModifiedBy;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "idrpPlanDetail")
 	private Set<DataTrajectory> dataTrajectorySet;

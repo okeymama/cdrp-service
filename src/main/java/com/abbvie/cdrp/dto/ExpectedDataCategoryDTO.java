@@ -25,7 +25,7 @@ public class ExpectedDataCategoryDTO {
 	
 	private String dataTransferFrequency;
 	
-	private Boolean isCriticalData;
+	private String criticalData;
 	
 	private String createdBy;
 	
