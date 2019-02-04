@@ -37,7 +37,7 @@ public class AssignedSubject implements Serializable{
 	private Long assignedSubjectId;
 	
 	@Column(name="subject_id")
-	private Long subjectId;
+	private String subjectId;
 	
 	@Column(name="created_by")
 	private String createdBy;

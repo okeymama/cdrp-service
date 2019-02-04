@@ -1,5 +1,6 @@
 package com.abbvie.cdrp.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.abbvie.cdrp.dto.BusinessRuleDTO;
 import com.abbvie.cdrp.dto.ExpectedDataCategoryDTO;
+import com.abbvie.cdrp.dto.IDRPCheckDTO;
 import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
 
 @Service
@@ -23,10 +25,21 @@ public class ExpectedDataPageService {
 	@Autowired
 	private BusinessRuleService businessRuleService;
 	
+	@Autowired
+	private IDRPCheckService idrpCheckService;
+	
 	
 	public List<IDRPPlanDetailDTO> getIdrpPlanDetailByIds(List<Long>  idrpPlanDetailIds) throws InstantiationException, IllegalAccessException {
 		return idrpPlanDetailService.getIDRPPlanDetailDTOList(idrpPlanDetailIds);
 		
+	}
+	
+	public void saveIDRPCheckDTOList(List<IDRPCheckDTO> idrpCheckDTOList) throws InstantiationException, IllegalAccessException{
+		for(IDRPCheckDTO idrpCheckDTO : idrpCheckDTOList) {
+			idrpCheckDTO.setCreatedDate(LocalDate.now());
+			idrpCheckDTO.setLastUpdatedDate(LocalDate.now());
+		} 
+		idrpCheckService.saveIDRPCheckDTOList(idrpCheckDTOList);
 	}
 	
 

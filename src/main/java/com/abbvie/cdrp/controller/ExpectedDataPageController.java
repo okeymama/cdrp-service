@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.abbvie.cdrp.dto.BusinessRuleDTO;
 import com.abbvie.cdrp.dto.ExpectedDataCategoryDTO;
+import com.abbvie.cdrp.dto.IDRPCheckDTO;
 import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
 import com.abbvie.cdrp.service.ExpectedDataPageService;
 
@@ -37,6 +38,13 @@ public class ExpectedDataPageController {
 		 idrpPlanDetailIds.add(idrpPlanDetailId);
 		 List<IDRPPlanDetailDTO> idrpPlanDetailDTOList = expectedDataPageService.getIdrpPlanDetailByIds(idrpPlanDetailIds);
 		 return ResponseEntity.ok(idrpPlanDetailDTOList);
+	 }
+	
+	@PostMapping("/saveIDRPCheckDTOList")
+	public @ResponseBody ResponseEntity<String> saveIDRPCheckDTOList(@RequestBody List<IDRPCheckDTO> idrpCheckDTOList) throws Exception{
+		 log.info("Inside AddIDRPCheckPageController.saveIDRPCheckDTOList: ");
+		 expectedDataPageService.saveIDRPCheckDTOList(idrpCheckDTOList);
+		 return ResponseEntity.ok("saved");
 	 }
 	
 	@GetMapping("/deleteExpectedDataCategory")
