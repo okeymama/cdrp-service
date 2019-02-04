@@ -18,7 +18,7 @@ public class AssignedSubjectDTO {
 
 	private Long assignedSubjectId;
 	
-	private Long subjectId;
+	private String subjectId;
 	
 	private String createdBy;
 	
