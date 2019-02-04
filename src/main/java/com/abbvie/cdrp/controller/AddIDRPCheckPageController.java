@@ -1,6 +1,5 @@
 package com.abbvie.cdrp.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +12,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abbvie.cdrp.dto.DataTrajectoryDTO;
-import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
+import com.abbvie.cdrp.dto.IDRPCheckDTO;
 import com.abbvie.cdrp.service.AddDataTrajectoryPageService;
-import com.abbvie.cdrp.service.ExpectedDataPageService;
+import com.abbvie.cdrp.service.AddIDRPCheckPageService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j 
+@Slf4j
 @RestController
-@RequestMapping("/AddDataTrajectoryPageController")
+@RequestMapping("/AddIDRPCheckPageController")
 @CrossOrigin(value="*")
-public class AddDataTrajectoryPageController {
+public class AddIDRPCheckPageController {
 	
 	@Autowired
-	private AddDataTrajectoryPageService addDataTrajectoryPageService;
+	private AddIDRPCheckPageService addIDRPCheckPageService;
 	
-	@PostMapping("/saveNewDataTrajectoryDTO")
-	public @ResponseBody ResponseEntity<String> saveNewDataTrajectoryDTO(@RequestBody DataTrajectoryDTO dataTrajectoryDTO) throws Exception{
-		 log.info("Inside AddDataTrajectoryPageController.saveNewDataTrajectoryDTO: ");
-		 addDataTrajectoryPageService.saveNewDataTrajectoryDTO(dataTrajectoryDTO);
+	@PostMapping("/saveIDRPCheckDTOList")
+	public @ResponseBody ResponseEntity<String> saveIDRPCheckDTOList(@RequestBody List<IDRPCheckDTO> idrpCheckDTOList) throws Exception{
+		 log.info("Inside AddIDRPCheckPageController.saveIDRPCheckDTOList: ");
+		 addIDRPCheckPageService.saveIDRPCheckDTOList(idrpCheckDTOList);
 		 return ResponseEntity.ok("saved");
 	 }
+
 }

@@ -20,7 +20,7 @@ public class AddDataTrajectoryPageService {
 	@Autowired
 	private DataTrajectoryService dataTrajectoryService;
 	
-	public void saveNewDataTrajectoryDTOList(DataTrajectoryDTO dataTrajectoryDTO) throws InstantiationException, IllegalAccessException{
+	public void saveNewDataTrajectoryDTO(DataTrajectoryDTO dataTrajectoryDTO) throws InstantiationException, IllegalAccessException{
 		List<DataTrajectoryDTO> dataTrajectoryDTOList = new ArrayList<>();
 		dataTrajectoryDTO.setCreatedDate(LocalDate.now());
 		dataTrajectoryDTO.setLastUpdatedDate(LocalDate.now());
