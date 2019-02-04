@@ -43,4 +43,8 @@ public class ExpectedDataCategoryDTO {
 	
 	private List<AppliedVisitDTO> appliedVisitDTOList;	
 		
+
+	private List<BusinessRuleDTO> businessRuleDTOList;	
+	
+	private List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList;
 }

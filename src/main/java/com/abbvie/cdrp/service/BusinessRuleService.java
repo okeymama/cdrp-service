@@ -40,15 +40,16 @@ public class BusinessRuleService {
 		return businessRuleDTOList;
 	}
 
-	public void saveBusinessRuleDTOList(List<BusinessRuleDTO> businessRuleDTOList) {
-
+	public String saveBusinessRuleDTOList(List<BusinessRuleDTO> businessRuleDTOList) {
+		String result="fail";
 		if(!CollectionUtils.isEmpty(businessRuleDTOList)) {
 			Set<BusinessRule> businessRuleSet = new HashSet<>();
 			businessRuleSet = getBusniessRule(businessRuleSet, businessRuleDTOList);
 			businessRuleRepository.saveAll(businessRuleSet);
 			businessRuleRepository.flush();
+			result="success";
 		}
-
+		return result;
 	}
 	
 	

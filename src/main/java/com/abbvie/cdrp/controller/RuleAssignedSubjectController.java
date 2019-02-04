@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/RuleAssignedSubjectController")
+@CrossOrigin(value="*")
 public class RuleAssignedSubjectController {
 
 	@Autowired
@@ -47,9 +49,11 @@ public class RuleAssignedSubjectController {
 	}
 	
 	@PostMapping("/saveRuleAssignedSubjectDTOList")
-	 public @ResponseBody void saveRuleAssignedSubjectDTOList(@RequestBody List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList) throws Exception{
-		 log.info("Inside IDRPPlanDetailController.saveRuleAssignedSubjectDTOList: ");
-		 ruleAssignedSubjectService.saveRuleAssignedSubjectDTOList(ruleAssignedSubjectDTOList);
+	 public @ResponseBody ResponseEntity<String> saveRuleAssignedSubjectDTOList(@RequestBody List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList) throws Exception{
+		String result="fail"; 
+		log.info("Inside IDRPPlanDetailController.saveRuleAssignedSubjectDTOList: ");
+		 result = ruleAssignedSubjectService.saveRuleAssignedSubjectDTOList(ruleAssignedSubjectDTOList);
+		 return ResponseEntity.ok(result);
 	 }
 	
 }

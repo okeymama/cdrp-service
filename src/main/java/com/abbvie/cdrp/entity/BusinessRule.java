@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -61,10 +62,10 @@ public class BusinessRule implements Serializable {
 	private String createdBy;
 	
 	@Column(name="creation_date")
-	private Date creationDate;
+	private LocalDate creationDate;
 	
 	@Column(name="last_updated_date")
-	private Date lastUpdatedDate;	
+	private LocalDate lastUpdatedDate;	
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "businessRule")
 	private Set<BusinessRuleCondition> businessRuleConditionSet;	
