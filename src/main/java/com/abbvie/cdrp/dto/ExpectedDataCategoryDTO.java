@@ -3,6 +3,7 @@
  */
 package com.abbvie.cdrp.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -29,9 +30,11 @@ public class ExpectedDataCategoryDTO {
 	
 	private String createdBy;
 	
-	private Date createdDate;
+	private LocalDate createdDate;
 	
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
+	
+	private String comment;
 	
 	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	private Long dataTrajectoryId;
@@ -40,4 +43,8 @@ public class ExpectedDataCategoryDTO {
 	
 	private List<AppliedVisitDTO> appliedVisitDTOList;	
 		
+
+	private List<BusinessRuleDTO> businessRuleDTOList;	
+	
+	private List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList;
 }

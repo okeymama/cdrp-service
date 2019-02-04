@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -61,10 +62,10 @@ public class BusinessRuleCondition implements Serializable{
 	private String createdBy;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="last_updated_date")
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
 	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = BusinessRule.class)
     @JoinColumn(name = "business_rule_id", nullable = false)

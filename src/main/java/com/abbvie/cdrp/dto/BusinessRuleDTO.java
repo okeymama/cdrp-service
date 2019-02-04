@@ -1,5 +1,6 @@
 package com.abbvie.cdrp.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -21,9 +22,9 @@ public class BusinessRuleDTO {
 	
 	private String createdBy;
 	
-	private Date creationDate;
+	private LocalDate creationDate;
 	
-	private Date lastUpdatedDate;	
+	private LocalDate lastUpdatedDate;	
 	
 	private List<BuisnessRuleConditionDTO> businessRuleConditionDTOList;	
 	

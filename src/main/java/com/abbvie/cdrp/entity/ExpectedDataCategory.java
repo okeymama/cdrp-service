@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -61,11 +62,14 @@ public class ExpectedDataCategory implements Serializable{
 	private String createdBy;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="last_updated_date")
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
 	
+	@Column(name="comment")
+	private String comment;
+
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = DataTrajectory.class)
     @JoinColumn(name = "data_trajectory_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

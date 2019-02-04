@@ -49,15 +49,16 @@ public class RuleAssignedSubjectService {
 		return result;
 	}
 	
-	public void saveRuleAssignedSubjectDTOList(List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList) {
-
+	public String saveRuleAssignedSubjectDTOList(List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList) {
+		String result = "fail";
 		if(!CollectionUtils.isEmpty(ruleAssignedSubjectDTOList)) {
 			Set<RuleAssignedSubject> ruleAssignedSubjectSet = new HashSet<>();
 			ruleAssignedSubjectSet = getRuleAssignedSubject(ruleAssignedSubjectSet, ruleAssignedSubjectDTOList);
 			ruleAssignedSubjectRepository.saveAll(ruleAssignedSubjectSet);
 			ruleAssignedSubjectRepository.flush();
+			result = "success";
 		}
-
+		return result;
 	}
 	
 	public List<RuleAssignedSubjectDTO> getRuleAssignedSubjectDTO(List<RuleAssignedSubjectDTO> ruleAssignedSubjectDTOList,

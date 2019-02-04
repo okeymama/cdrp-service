@@ -4,6 +4,7 @@
 package com.abbvie.cdrp.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -76,10 +77,10 @@ public class IDRPCheck implements Serializable{
 	private String createdBy;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="last_updated_date")
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
 	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = ExpectedDataCategory.class)
     @JoinColumn(name = "expected_data_category_id", nullable = false)
