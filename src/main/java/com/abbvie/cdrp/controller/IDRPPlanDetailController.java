@@ -34,7 +34,7 @@ public class IDRPPlanDetailController {
 	private IDRPPlanDetailService idrpPlanDetailService;
 	
 	@GetMapping("/getAllIDRPPlanDetailDTO")
-	 public @ResponseBody ResponseEntity<List<IDRPPlanDetailDTO>> getAllIDRPPlanDetailDTO() throws Exception{
+	 public  ResponseEntity<List<IDRPPlanDetailDTO>> getAllIDRPPlanDetailDTO() throws Exception{
 		 log.info("Inside IDRPPlanDetailController.getAllIDRPPlanDetailDTO: ");
 		 List<IDRPPlanDetailDTO> idrpPlanDetailDTO = idrpPlanDetailService.getAllIDRPPlanDetailDTO();
 		 return ResponseEntity.ok(idrpPlanDetailDTO);		
