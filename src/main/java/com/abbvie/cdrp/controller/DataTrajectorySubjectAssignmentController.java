@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.abbvie.cdrp.dto.DataTrajectoryDTO;
 import com.abbvie.cdrp.dto.DataTrajectorySubjectAssignmentDTO;
 import com.abbvie.cdrp.service.DataTrajectoryService;
 import com.abbvie.cdrp.service.DataTrajectorySubjectAssignmentService;

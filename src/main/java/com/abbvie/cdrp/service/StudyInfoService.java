@@ -67,11 +67,13 @@ public class StudyInfoService {
 		add();
 		IDRPPlanDetailDTO idrpPlanDetailDTO =  idrpPlanDetailService.getIDRPPlanDetailDTOByStudyID(id);
 
-		StudyInfo d1 = new StudyInfo("M45-960", r1,li,p1,idrpPlanDetailDTO);
+		StudyInfo d1 = new StudyInfo("MZ-123076", r1,li,p1,idrpPlanDetailDTO);
 		StudyInfo d2 = new StudyInfo("MZ-123080", r2,li,p1,idrpPlanDetailDTO);
-		
+		StudyInfo d3 = new StudyInfo("MZ-123086", r2,li,p1,idrpPlanDetailDTO);		
 		map.put(d1.getStudyId(),d1 );
 		map.put(d2.getStudyId(), d2);
+		map.put(d1.getStudyId(),d1 );
+		map.put(d3.getStudyId(),d3);
 		
 		StudyInfo d;
 		d = map.get(id);

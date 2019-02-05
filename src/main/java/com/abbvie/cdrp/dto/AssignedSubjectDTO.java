@@ -3,6 +3,7 @@
  */
 package com.abbvie.cdrp.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +23,9 @@ public class AssignedSubjectDTO {
 	
 	private String createdBy;
 	
-	private Date creationDate;
+	private LocalDate creationDate;
 	
-	private Date lastUpdatedDate;
+	private LocalDate lastUpdatedDate;
 	
 	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	private Long dataTrajectorySubjectAssignmentId;
