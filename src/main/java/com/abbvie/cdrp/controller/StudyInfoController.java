@@ -1,5 +1,8 @@
 package com.abbvie.cdrp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
 import com.abbvie.cdrp.dto.StudyInfo;
+import com.abbvie.cdrp.dto.StudyInfoDTO;
+import com.abbvie.cdrp.dto.StudyInfoTeslaDTO;
 import com.abbvie.cdrp.service.IDRPPlanDetailService;
 import com.abbvie.cdrp.service.StudyInfoService;
 
@@ -37,11 +43,14 @@ public class StudyInfoController {
 	 }
 	
 	@GetMapping("/getStudyInfo")
-	 public @ResponseBody ResponseEntity<StudyInfo> getStudyInfo(@RequestParam String studyId) throws Exception{
+	 public @ResponseBody ResponseEntity<StudyInfoDTO> getStudyInfo(@RequestParam String studyId) throws Exception{
 		log.info("Inside IDRPCheckController.getStudyInfo: ");
-		StudyInfo studyInfo = studyInfoService.getStudyInfo(studyId);
-		 return ResponseEntity.ok(studyInfo);
+	    StudyInfoDTO studyInfoDTOList = studyInfoService.getStudyInfo(studyId);
+		return ResponseEntity.ok(studyInfoDTOList);
 	 }
+	
+	
+	
 	
 	
 }

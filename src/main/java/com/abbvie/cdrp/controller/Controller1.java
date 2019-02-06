@@ -17,7 +17,7 @@ public class Controller1 {
 
 	List<Study> studies = new ArrayList<Study>();
 	Study s1= new Study("MZ-123076","Days until Lorem IpsumIpsum loerem ips Lorem IpsumIpsum loerem ips","2","19th Oct 2018","10","45","IDRP V2 Approved");
-	Study s3= new Study("MZ-123086","","","","","","");
+	Study s3= new Study("MZ-080","","","","","","");
 	
 	Study s2= new Study("MZ-123080","Days until Lorem IpsumIpsum loerem ips ","3","19th Oct 2018","5","12","IDRP V1 Approved");
 	
@@ -45,6 +45,8 @@ public class Controller1 {
 	@CrossOrigin(value="*")
 	@RequestMapping(value = "/getstudy", method = RequestMethod.GET)
 		public List<Study> getNotes() {
+		System.out.println("HEREEEEEEEEEEEEEEEEEEE");
+		System.out.println(studies);
 				System.out.println(studies.size());
 		return studies;
 }

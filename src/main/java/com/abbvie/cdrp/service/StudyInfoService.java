@@ -2,8 +2,10 @@ package com.abbvie.cdrp.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.abbvie.cdrp.dto.IDRPPlanDetailDTO;
 import com.abbvie.cdrp.dto.IdrpPlan;
@@ -11,10 +13,15 @@ import com.abbvie.cdrp.dto.Keyevent;
 import com.abbvie.cdrp.dto.PersonalAssignment;
 import com.abbvie.cdrp.dto.Reference;
 import com.abbvie.cdrp.dto.StudyInfo;
+import com.abbvie.cdrp.dto.StudyInfoDTO;
+import com.abbvie.cdrp.dto.StudyInfoTeslaDTO;
+import com.abbvie.cdrp.entity.AssignedSubject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class StudyInfoService {
@@ -61,13 +68,25 @@ public class StudyInfoService {
 	
 	}
 	
-	public StudyInfo getStudyInfo(@RequestParam String id)
+	public StudyInfoDTO getStudyInfo(String id )
 	{
-		li = new ArrayList();
-		add();
+		
+		final String uri = "https://salesforce-db-service.herokuapp.com/StudyInfoTeslaController/getStudyInfoTeslaDTO";
+		RestTemplate restTemplate = new RestTemplate();
+		List<String> studyIdList = new ArrayList<>();
+		studyIdList.add(id);
+		StudyInfoTeslaDTO studyInfoTeslaDTO = restTemplate.postForObject( uri, studyIdList, StudyInfoTeslaDTO.class);
+
 		IDRPPlanDetailDTO idrpPlanDetailDTO =  idrpPlanDetailService.getIDRPPlanDetailDTOByStudyID(id);
 
-		StudyInfo d1 = new StudyInfo("MZ-123076", r1,li,p1,idrpPlanDetailDTO);
+		StudyInfoDTO studyInfoDTO = new StudyInfoDTO();
+		studyInfoDTO.setStudyId(id);
+		studyInfoDTO.setReferenceDTO(studyInfoTeslaDTO.getReferenceDTO());
+		studyInfoDTO.setKeyEventsDTO(studyInfoTeslaDTO.getKeyEventsDTO());
+		studyInfoDTO.setPersonalAssignmentMap(studyInfoTeslaDTO.getPersonalAssignmentMap());
+		studyInfoDTO.setIdrpPlanDetailDTO(idrpPlanDetailDTO);
+
+		/*StudyInfo d1 = new StudyInfo("MZ-123076", r1,li,p1,idrpPlanDetailDTO);
 		StudyInfo d2 = new StudyInfo("MZ-123080", r2,li,p1,idrpPlanDetailDTO);
 		StudyInfo d3 = new StudyInfo("MZ-123086", r2,li,p1,idrpPlanDetailDTO);		
 		map.put(d1.getStudyId(),d1 );
@@ -77,8 +96,8 @@ public class StudyInfoService {
 		
 		StudyInfo d;
 		d = map.get(id);
-		System.out.println(d);
-		return d;
+		System.out.println(d);*/
+		return studyInfoDTO;
 	}
 	
 	
