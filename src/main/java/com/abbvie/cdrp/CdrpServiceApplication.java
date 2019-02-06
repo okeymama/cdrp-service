@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableJpaAuditing
 @EnableJpaRepositories
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages="com.abbvie.cdrp")
 public class CdrpServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CdrpServiceApplication.class, args);
 	}
+	
 }
