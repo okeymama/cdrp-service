@@ -73,10 +73,12 @@ public class IDRPPlanDetailService {
 	 * @return
 	 */
 	public IDRPPlanDetailDTO getIDRPPlanDetailDTOByStudyID(String studyId) {
-		
+		IDRPPlanDetailDTO idrpPlanDetailDTO = null;
 		IDRPPlanDetail idrpPlanDetail = idrpPlanDetailRepository.findByStudyId(studyId);
-		IDRPPlanDetailDTO idrpPlanDetailDTO = new IDRPPlanDetailDTO();
-		BeanUtils.copyProperties(idrpPlanDetail, idrpPlanDetailDTO);
+		if(null != idrpPlanDetail) {
+			idrpPlanDetailDTO = new IDRPPlanDetailDTO();
+			BeanUtils.copyProperties(idrpPlanDetail, idrpPlanDetailDTO);
+		}
 		return idrpPlanDetailDTO;
 	}
 	
