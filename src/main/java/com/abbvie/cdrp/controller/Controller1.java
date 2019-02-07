@@ -16,10 +16,10 @@ import com.abbvie.cdrp.dto.Study;
 public class Controller1 {
 
 	List<Study> studies = new ArrayList<Study>();
-	Study s1= new Study("MZ-123076","Days until Lorem IpsumIpsum loerem ips Lorem IpsumIpsum loerem ips","2","19th Oct 2018","10","45","IDRP V2 Approved");
+	Study s1= new Study("MZ-070","Days until Lorem IpsumIpsum loerem ips Lorem IpsumIpsum loerem ips","2","19th Oct 2018","10","45","IDRP V2 Approved");
 	Study s3= new Study("MZ-080","","","","","","");
-	
-	Study s2= new Study("MZ-123080","Days until Lorem IpsumIpsum loerem ips ","3","19th Oct 2018","5","12","IDRP V1 Approved");
+	Study s2= new Study("MZ-060","Days until Lorem IpsumIpsum loerem ips ","3","19th Oct 2018","5","12","IDRP V1 Approved");
+	Study s4= new Study("MZ-090","","","","","","");
 	
 	
 	List<Details> details = new ArrayList<Details>();
@@ -37,8 +37,10 @@ public class Controller1 {
 		studies.add(s1);
 		studies.add(s2);
 		studies.add(s3);
+		studies.add(s4);
 		details.add(d1);
 		details.add(d2);
+		details.add(d3);
 		details.add(d3);
 	}
 	
