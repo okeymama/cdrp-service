@@ -53,7 +53,7 @@ public class IDRPPlanDetailController {
 		 idrpPlanDetailService.saveIDRPPlanDetailDTOList(idrpPlanDetailDTOList);
 	 }
 	
-	@PostMapping("/saveIDRPPlanDetailDTOList")
+	@PostMapping("/deleteIDRPPlanDetailDTOList")
 	public @ResponseBody String deleteIDRPPlanDetailDTOList(List<Long> idrpPlanDetailsIds) {
 		log.info("Inside IDRPPlanDetailController.saveIDRPPlanDetailDTOList: ");
 		return idrpPlanDetailService.deleteIDRPPlanDetailDTOList(idrpPlanDetailsIds);
