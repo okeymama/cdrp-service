@@ -68,19 +68,18 @@ public class StudyInfoService {
 	
 	}
 	
-	public StudyInfoDTO getStudyInfo(String id )
+	public StudyInfoDTO getStudyInfo(String studyId)
 	{
 		
 		final String uri = "https://salesforce-db-service.herokuapp.com/StudyInfoTeslaController/getStudyInfoTeslaDTO";
 		RestTemplate restTemplate = new RestTemplate();
-		List<String> studyIdList = new ArrayList<>();
-		studyIdList.add(id);
-		StudyInfoTeslaDTO studyInfoTeslaDTO = restTemplate.postForObject( uri, studyIdList, StudyInfoTeslaDTO.class);
+		
+		StudyInfoTeslaDTO studyInfoTeslaDTO = restTemplate.postForObject(uri, studyId, StudyInfoTeslaDTO.class);
 
-		IDRPPlanDetailDTO idrpPlanDetailDTO =  idrpPlanDetailService.getIDRPPlanDetailDTOByStudyID(id);
+		IDRPPlanDetailDTO idrpPlanDetailDTO =  idrpPlanDetailService.getIDRPPlanDetailDTOByStudyID(studyId);
 
 		StudyInfoDTO studyInfoDTO = new StudyInfoDTO();
-		studyInfoDTO.setStudyId(id);
+		studyInfoDTO.setStudyId(studyId);
 		studyInfoDTO.setReferenceDTO(studyInfoTeslaDTO.getReferenceDTO());
 		studyInfoDTO.setKeyEventsDTO(studyInfoTeslaDTO.getKeyEventsDTO());
 		studyInfoDTO.setPersonalAssignmentMap(studyInfoTeslaDTO.getPersonalAssignmentMap());
