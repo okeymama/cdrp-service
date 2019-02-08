@@ -54,4 +54,11 @@ public class DataTrajectorySubjectAssignmentController {
 		String result = dataTrajectorySubjectAssignmentService.deleteDataTrajectorySubjectAssignmentDTOList(dataTrajectorySubjectAssignmentIds);
 		return result;
 	} 
+	
+	@PostMapping("/deleteDataTrajectorySubjectAssignmentDTOByTrajectoryID")
+	public String deleteDataTrajectorySubjectAssignmentDTOByTrajectoryID(@RequestBody List<Long> dataTrajectoryIds) throws Exception{
+		log.info("Inside DataTrajectorySubjectAssignmentController.deleteDataTrajectorySubjectAssignmentDTOByTrajectoryID: ");
+		return dataTrajectorySubjectAssignmentService.deleteDataTrajectorySubjectAssignmentDTOByTrajectoryID(dataTrajectoryIds);
+	} 
+	
 }

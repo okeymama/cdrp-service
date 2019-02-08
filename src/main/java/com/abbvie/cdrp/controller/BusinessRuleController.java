@@ -47,6 +47,12 @@ public class BusinessRuleController {
 		return result;
 	}
 	
+	@PostMapping("/deleteBusinessRuleDTOListByExpectedDatacategoryId")
+	public String deleteBusinessRuleDTOListByExpectedDatacategoryId(@RequestBody List<Long> ExpectedDataCategoryIds) throws Exception{
+		log.info("Inside DataTrajectorySubjectAssignmentController.deleteBusinessRuleDTOListByExpectedDatacategoryId: ");
+		return businessRuleService.deleteBusinessRuleDTOListByExpectedDatacategoryId(ExpectedDataCategoryIds);
+	} 
+	
 	@PostMapping("/saveBusinessRuleDTOList")
 	 public @ResponseBody void saveBusinessRuleDTOList(@RequestBody List<BusinessRuleDTO> businessRuleDTOList) throws Exception{
 		 log.info("Inside BusinessRulenController.saveBusinessRuleDTOList: ");

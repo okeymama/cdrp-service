@@ -58,6 +58,13 @@ public class DataTrajectorySubjectAssignmentService {
 	public void saveDataTrajectorySubjectAssignmentDTOList(List<DataTrajectorySubjectAssignmentDTO> dataTrajectorySubjectAssignmentDTOList) throws InstantiationException, IllegalAccessException{
 		
 		if(!CollectionUtils.isEmpty(dataTrajectorySubjectAssignmentDTOList)) {
+			List<Long> dataTrajectoryIds = new ArrayList<>();
+			for(DataTrajectorySubjectAssignmentDTO dataTrajectorySubjectAssignmentDTO:dataTrajectorySubjectAssignmentDTOList) {
+				dataTrajectoryIds.add(dataTrajectorySubjectAssignmentDTO.getDataTrajectoryId());
+			}
+			
+			deleteDataTrajectorySubjectAssignmentDTOByTrajectoryID(dataTrajectoryIds);
+			
 			Set<DataTrajectorySubjectAssignment> dataTrajectorySubjectAssignmentSet = new HashSet<>();
 			dataTrajectorySubjectAssignmentSet = getDataTrajectorySubjectAssignment(dataTrajectorySubjectAssignmentSet, dataTrajectorySubjectAssignmentDTOList);
 			dataTrajectorySubjectAssignmentRepository.saveAll(dataTrajectorySubjectAssignmentSet);
@@ -81,6 +88,28 @@ public class DataTrajectorySubjectAssignmentService {
 		}
 		return result;
 	}
+	
+	
+	public String deleteDataTrajectorySubjectAssignmentDTOByTrajectoryID(List<Long> dataTrajectoryIds) {
+		List<Long> dataTrajectorySubjectAssignmentIds = new ArrayList<>();
+		String result = "fail";
+		if(!CollectionUtils.isEmpty(dataTrajectoryIds)) {
+			
+			dataTrajectorySubjectAssignmentIds = dataTrajectorySubjectAssignmentRepository.getByTrajectoryId(dataTrajectoryIds);
+			}
+			
+		if(!CollectionUtils.isEmpty(dataTrajectorySubjectAssignmentIds)) {
+			for(Long datatrajectorySubjectAssignmentId : dataTrajectorySubjectAssignmentIds) {
+				dataTrajectorySubjectAssignmentRepository.deleteById(datatrajectorySubjectAssignmentId);
+			}
+			result = "success";
+		}
+		
+		
+		return result;
+	}
+	
+	
 	
 	/**
 	 * @param dataTrajectorySubjectAssignmentDTOList
