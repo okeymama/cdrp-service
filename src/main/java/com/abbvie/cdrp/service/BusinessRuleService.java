@@ -12,6 +12,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.abbvie.cdrp.dto.BuisnessRuleConditionDTO;
 import com.abbvie.cdrp.dto.BusinessRuleDTO;
+import com.abbvie.cdrp.dto.DataTrajectorySubjectAssignmentDTO;
 import com.abbvie.cdrp.dto.IDRPCheckDTO;
 import com.abbvie.cdrp.entity.BusinessRule;
 import com.abbvie.cdrp.entity.BusinessRuleCondition;
@@ -43,6 +44,11 @@ public class BusinessRuleService {
 	public String saveBusinessRuleDTOList(List<BusinessRuleDTO> businessRuleDTOList) {
 		String result="fail";
 		if(!CollectionUtils.isEmpty(businessRuleDTOList)) {
+			List<Long> ExpectedDataCategoryIds = new ArrayList<>();
+			for(BusinessRuleDTO businessRuleDTO:businessRuleDTOList) {
+				ExpectedDataCategoryIds.add(businessRuleDTO.getExpectedDataCategoryId());
+			}
+			deleteBusinessRuleDTOListByExpectedDatacategoryId(ExpectedDataCategoryIds);
 			Set<BusinessRule> businessRuleSet = new HashSet<>();
 			businessRuleSet = getBusniessRule(businessRuleSet, businessRuleDTOList);
 			businessRuleRepository.saveAll(businessRuleSet);
@@ -52,6 +58,23 @@ public class BusinessRuleService {
 		return result;
 	}
 	
+	public String deleteBusinessRuleDTOListByExpectedDatacategoryId(List<Long> ExpectedDataCategoryIds) {
+		List<Long> businessRuleIds = new ArrayList<>();
+		String result = "fail";
+		if(!CollectionUtils.isEmpty(ExpectedDataCategoryIds)){
+			businessRuleIds = businessRuleRepository.getByExpectedDataCategoryId(ExpectedDataCategoryIds);
+			}
+			
+		if(!CollectionUtils.isEmpty(businessRuleIds)) {
+			for(Long businessRuleId : businessRuleIds) {
+				businessRuleRepository.deleteById(businessRuleId);
+			}
+			result = "success";
+		}
+		
+		
+		return result;
+	}
 	
 	public List<BusinessRuleDTO> getBusinessRuleDTO(List<BusinessRuleDTO> businessRuleDTOList,
 			List<BusinessRule> businessRuleList) {
